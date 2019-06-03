@@ -1,0 +1,7 @@
+{
+  "/jsonrpc": {
+    "target": "http://localhost:3434",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

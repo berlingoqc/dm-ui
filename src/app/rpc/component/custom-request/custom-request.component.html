@@ -1,0 +1,8 @@
+<mat-card>
+  <mat-card-title>
+    Make custom RPC request
+  </mat-card-title>
+  <app-rpc-request (request)="onRequest($event)"></app-rpc-request>
+</mat-card>
+
+<app-call-output [output]="output" [lastRequest]="client.lastCall" [lastResponse]="client.lastOutput"></app-call-output>

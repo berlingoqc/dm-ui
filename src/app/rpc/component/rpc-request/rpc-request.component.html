@@ -1,0 +1,29 @@
+<div class="example-form" (ngSubmit)="onClickRequest()">
+  <mat-form-field class="example-full-width">
+    <mat-placeholder>URL Server</mat-placeholder>
+    <input name="url" [(ngModel)]="model.url" matInput type="text" />
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-placeholder>Namespace</mat-placeholder>
+    <input name="namespace" [(ngModel)]="model.namespace" matInput type="text" />
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-placeholder>Method</mat-placeholder>
+    <input name="method" matInput [(ngModel)]="model.method" type="text" />
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-placeholder>Add params</mat-placeholder>
+    <input name="param" matInput [(ngModel)]="param" type="search" />
+    <button (click)="addParam()" mat-button matSuffix mat-stroked-button aria-label="add">
+      <mat-icon aria-hidden="false" aria-label="Example home icon">add</mat-icon>
+    </button>
+  </mat-form-field>
+  <ul>
+    <li *ngFor="let p of model.params">{{ p }}</li>
+  </ul>
+
+  <div class="example-button-row">
+    <button mat-stroked-button (click)="onClickRequest()">Execute RPC Call</button>
+    <button mat-stroked-button color="warn" (click)="clear()">Clear</button>
+  </div>
+</div>
