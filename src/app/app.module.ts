@@ -1,3 +1,4 @@
+import { Aria2Module } from './aria2/aria2.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BackendModule } from './backend/backend.module';
@@ -21,7 +22,8 @@ import { RpcModule } from './rpc/rpc.module';
     MatModule,
     YdlUiModule,
     BackendModule,
-    RpcModule
+    RpcModule,
+    Aria2Module
   ],
   providers: [],
   bootstrap: [AppComponent]

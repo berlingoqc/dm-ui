@@ -79,7 +79,7 @@ export class RPCClient {
   }
 }
 
-function Rpcimplement(namespace: string, subnamespace: string) {
+export function Rpcimplement(namespace: string, subnamespace: string) {
   return function(Class: Function) {
     const methods = getAllMethods(Class.prototype) as string[];
     methods.forEach(value => {
