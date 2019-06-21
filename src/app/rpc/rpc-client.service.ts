@@ -38,6 +38,7 @@ export interface RPCCall {
 })
 export class RPPClientSettings {
   url: string = 'localhost:4200';
+  urlsocket: string = 'ws://localhost:4200';
 }
 
 @Injectable()
