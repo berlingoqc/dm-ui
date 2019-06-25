@@ -1,4 +1,3 @@
-import { BackendClientService } from './backend/backend-client.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -9,5 +8,5 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'downloda-manager-ui';
 
-  constructor(private backendClient: BackendClientService) {}
+  constructor() {}
 }

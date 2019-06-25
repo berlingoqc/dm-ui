@@ -7,7 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-download.component.sass']
 })
 export class AddDownloadComponent implements OnInit {
+  url: string;
+
   constructor(private aria2: Aria2RPCCall) {}
 
   ngOnInit() {}
+
+  addToQueue() {
+    this.aria2.addUri([this.url]).subscribe(over => {
+      console.log(over);
+    });
+  }
 }

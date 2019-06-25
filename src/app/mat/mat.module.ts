@@ -6,7 +6,10 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatIconModule,
-  MatGridListModule
+  MatGridListModule,
+  MatTableModule,
+  MatProgressBarModule,
+  MatChipsModule
 } from '@angular/material';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -25,7 +28,10 @@ import { NgModule } from '@angular/core';
     MatInputModule,
     MatFormFieldModule,
     MatIconModule,
-    MatGridListModule
+    MatGridListModule,
+    MatTableModule,
+    MatProgressBarModule,
+    MatChipsModule
   ],
   exports: [
     FormsModule,
@@ -37,7 +43,10 @@ import { NgModule } from '@angular/core';
     MatFormFieldModule,
     MatInputModule,
     MatFormFieldModule,
-    MatIconModule
+    MatIconModule,
+    MatTableModule,
+    MatProgressBarModule,
+    MatChipsModule
   ]
 })
 export class MatModule {}

@@ -1,3 +1,8 @@
-<p>
-  add-download works!
-</p>
+<div class="example-container">
+  <p>URL of the Video to Download</p>
+  <mat-form-field class="full-input">
+    <input matInput [(ngModel)]="url" />
+  </mat-form-field>
+
+  <button mat-raised-button (click)="addToQueue()">Add to the queue</button>
+</div>

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SocketStateComponent } from './socket-state.component';
+import { Aria2Component } from './aria2.component';
 
-describe('SocketStateComponent', () => {
-  let component: SocketStateComponent;
-  let fixture: ComponentFixture<SocketStateComponent>;
+describe('Aria2Component', () => {
+  let component: Aria2Component;
+  let fixture: ComponentFixture<Aria2Component>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SocketStateComponent ]
+      declarations: [ Aria2Component ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SocketStateComponent);
+    fixture = TestBed.createComponent(Aria2Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

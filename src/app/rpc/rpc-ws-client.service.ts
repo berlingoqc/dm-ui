@@ -1,5 +1,4 @@
 import { RPCCall, RPPClientSettings } from './rpc-client.service';
-import { BackendSettingsService } from './../backend/backend-settings.service';
 import { Injectable } from '@angular/core';
 import { webSocket } from 'rxjs/webSocket';
 

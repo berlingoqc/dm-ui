@@ -1,7 +1,6 @@
 import { Aria2Module } from './aria2/aria2.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { BackendModule } from './backend/backend.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { MatModule } from './mat/mat.module';
@@ -21,7 +20,6 @@ import { RpcModule } from './rpc/rpc.module';
     AppRoutingModule,
     MatModule,
     YdlUiModule,
-    BackendModule,
     RpcModule,
     Aria2Module
   ],
