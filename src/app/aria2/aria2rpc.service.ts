@@ -43,4 +43,7 @@ export class Aria2RPCCall {
   tellWaiting(offset: number, num: number): Observable<Aria2Status[]> {
     return null;
   }
+  tellStopped(offset: number, num: number): Observable<Aria2Status[]> {
+    return null;
+  }
 }

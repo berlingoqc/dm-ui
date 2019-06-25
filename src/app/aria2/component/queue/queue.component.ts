@@ -1,42 +1,35 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component, OnInit } from '@angular/core';
 import { Aria2RPCCall, Aria2Status } from '../../aria2rpc.service';
 import { repeatWhen } from 'rxjs/operators';
-import { Observable, interval } from 'rxjs';
-import { MatTableDataSource } from '@angular/material';
+import { Observable, interval, Subscription } from 'rxjs';
+import { MatDialog, MatRadioChange } from '@angular/material';
+import { showMessagObservable } from 'src/app/utility/snackbar';
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
+enum TableMode {
+  WAITING = 'waiting',
+  ACTIVE = 'active',
+  STOPPED = 'stopped'
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' }
-];
 @Component({
   selector: 'app-queue',
   templateUrl: './queue.component.html',
   styleUrls: ['./queue.component.sass']
 })
 export class QueueComponent implements OnInit {
+  mode: TableMode = TableMode.ACTIVE;
   dataSource: Aria2Status[];
-  displayedColumns: string[] = ['status', 'name', 'progress', 'speed', 'option'];
+
+  offset: number = 0;
+  numberShow: number = 10;
+
+  sub: Subscription;
 
   constructor(private aria: Aria2RPCCall) {}
 
   ngOnInit() {
-    this.aria
-      .tellWaiting(0, 10)
+    this.sub = this.getStatusObserver()
       .pipe(repeatWhen(() => interval(1000)))
       .subscribe(data => {
         this.dataSource = data;
@@ -48,8 +41,43 @@ export class QueueComponent implements OnInit {
       this.aria.pause(element.gid).subscribe(data => {
         console.log(data);
       });
+    } else if (element.status == 'paused') {
+      showMessagObservable(this.aria.unpause(element.gid), data => data);
     }
   }
 
+  onModeChange(mode: MatRadioChange) {
+    this.mode = <TableMode>mode.value;
+    this.sub.unsubscribe();
+    this.ngOnInit();
+  }
+
   deleteItem(gid: string) {}
+
+  onItemDownward(gid: string) {}
+
+  onItemUpward(gid: string) {}
+
+  getStatusObserver(): Observable<Aria2Status[]> {
+    switch (this.mode) {
+      case 'active':
+        return this.aria.tellActive();
+      case 'stopped':
+        return this.aria.tellStopped(this.offset, this.numberShow);
+      case 'waiting':
+        console.log('TELL');
+        return this.aria.tellWaiting(this.offset, this.numberShow);
+    }
+  }
+
+  get getdisplayColumns(): string[] {
+    switch (this.mode) {
+      case TableMode.ACTIVE:
+        return ['status', 'name', 'progress', 'speed', 'option'];
+      case TableMode.STOPPED:
+        return ['status', 'name', 'progress', 'option'];
+      default:
+        return ['status', 'name', 'progress', 'option'];
+    }
+  }
 }
