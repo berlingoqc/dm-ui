@@ -10,6 +10,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { ServiceLocator } from './locator.service';
 import { RPCSystemCall } from './rpc/rpc-client.service';
 import { RpcModule } from './rpc/rpc.module';
+import { TaskModule } from './task/task.module';
+import { PipelineModule } from './pipeline/pipeline.module';
+import { SettingsModule } from './settings/settings.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,7 +24,10 @@ import { RpcModule } from './rpc/rpc.module';
     MatModule,
     YdlUiModule,
     RpcModule,
-    Aria2Module
+    Aria2Module,
+    TaskModule,
+    PipelineModule,
+    SettingsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,7 +12,9 @@ import {
   MatChipsModule,
   MatRadioModule,
   MatToolbarModule,
-  MatDialogModule
+  MatDialogModule,
+  MatTreeModule,
+  MatListModule
 } from '@angular/material';
 
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -38,7 +40,10 @@ const MAT_MODULE = [
   MatRadioModule,
   MatToolbarModule,
   MatDialogModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatCardModule,
+  MatTreeModule,
+  MatListModule
 ];
 
 @NgModule({

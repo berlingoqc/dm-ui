@@ -5,9 +5,16 @@ import { Injectable } from '@angular/core';
 
 export function showMessagObservable<T>(obs: Observable<T>, format: (T) => string) {
   const service = ServiceLocator.injector.get(MatSnackBar);
-  obs.subscribe(data => {
-    service.open(format(data), 'X', {
-      duration: 2000
-    });
-  });
+  obs.subscribe(
+    data => {
+      service.open(format(data), 'X', {
+        duration: 2000
+      });
+    },
+    error => {
+      service.open('Error ' + error, 'X', {
+        duration: 2000
+      });
+    }
+  );
 }

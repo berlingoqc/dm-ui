@@ -38,9 +38,7 @@ export class QueueComponent implements OnInit {
 
   togglePauseItem(element: Aria2Status) {
     if (element.status == 'active') {
-      this.aria.pause(element.gid).subscribe(data => {
-        console.log(data);
-      });
+      showMessagObservable(this.aria.pause(element.gid), data => data);
     } else if (element.status == 'paused') {
       showMessagObservable(this.aria.unpause(element.gid), data => data);
     }
@@ -52,7 +50,9 @@ export class QueueComponent implements OnInit {
     this.ngOnInit();
   }
 
-  deleteItem(gid: string) {}
+  deleteItem(gid: string) {
+    showMessagObservable(this.aria.remove(gid), data => data);
+  }
 
   onItemDownward(gid: string) {}
 

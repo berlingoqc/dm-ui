@@ -46,4 +46,7 @@ export class Aria2RPCCall {
   tellStopped(offset: number, num: number): Observable<Aria2Status[]> {
     return null;
   }
+  changePosition(gid: string, pos: number, how: string): Observable<any> {
+    return null;
+  }
 }
