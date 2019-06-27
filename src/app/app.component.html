@@ -1,6 +1,17 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>Welcome to {{ title }}!</h1>
-</div>
+<div class="app-container">
+  <mat-sidenav-container fullscreen class="exemple-container">
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="sideNav.onOpen()">
+      <app-side-nav></app-side-nav>
+    </mat-sidenav>
 
-<router-outlet></router-outlet>
+    <mat-sidenav-content>
+      <mat-toolbar>
+        <p><mat-checkbox [(ngModel)]="opened"></mat-checkbox></p>
+      </mat-toolbar>
+      <div class="app-body">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

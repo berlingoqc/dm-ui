@@ -15,6 +15,8 @@ import { PipelineModule } from './pipeline/pipeline.module';
 import { SettingsModule } from './settings/settings.module';
 import { RPCClientSocket } from './rpc/rpc-ws-client.service';
 import { Aria2WS } from './aria2/aria2rpc.service';
+import { SideNavComponent } from './dm/component/side-nav/side-nav.component';
+import { DmModule } from './dm/dm.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,7 +31,8 @@ import { Aria2WS } from './aria2/aria2rpc.service';
     Aria2Module,
     TaskModule,
     PipelineModule,
-    SettingsModule
+    SettingsModule,
+    DmModule
   ],
   providers: [],
   bootstrap: [AppComponent]

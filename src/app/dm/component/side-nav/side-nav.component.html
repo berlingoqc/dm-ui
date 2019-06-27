@@ -1,0 +1,13 @@
+<mat-list>
+  <mat-list-item class="list-item" *ngFor="let nav of navigation">
+    <button
+      matTooltip="{{ nav.tooltip }}"
+      matTooltipPosition="right"
+      (click)="onNavigate(nav.route)"
+      mat-fab
+      color="{{ nav.color }}"
+    >
+      {{ nav.text }}
+    </button>
+  </mat-list-item>
+</mat-list>
