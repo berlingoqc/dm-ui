@@ -1,6 +1,8 @@
+import { RPCCall } from './../rpc/rpc-client.service';
 import { Rpcimplement } from '../rpc/rpc-client.service';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { WSRPC } from '../rpc/rpc-ws-client.service';
 
 export interface Aria2Status {
   gid: string;
@@ -47,6 +49,27 @@ export class Aria2RPCCall {
     return null;
   }
   changePosition(gid: string, pos: number, how: string): Observable<any> {
+    return null;
+  }
+}
+@WSRPC('aria2', 'aria2')
+@Injectable({
+  providedIn: 'root'
+})
+export class Aria2WS {
+  onDownloadStart(): Subject<any> {
+    return null;
+  }
+  onDownloadPause(): Subject<any> {
+    return null;
+  }
+  onDownloadStop(): Subject<any> {
+    return null;
+  }
+  onDownloadComplete(): Subject<any> {
+    return null;
+  }
+  onBtDownloadComplete(): Subject<any> {
     return null;
   }
 }

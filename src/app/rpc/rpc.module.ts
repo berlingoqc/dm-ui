@@ -10,10 +10,11 @@ import { CallInfoComponent } from './component/call-info/call-info.component';
 import { CallOutputComponent } from './component/call-output/call-output.component';
 
 import { PrettyJsonModule } from 'angular2-prettyjson';
+import { RPCClientSocket } from './rpc-ws-client.service';
 
 @NgModule({
   declarations: [RpcRequestComponent, RpcUiComponent, CustomRequestComponent, CallInfoComponent, CallOutputComponent],
   imports: [CommonModule, MatModule, RPCUiRoutingModule],
-  providers: [RPCClient, RPCSystemCall, PrettyJsonModule]
+  providers: [RPCClient, RPCClientSocket, RPCSystemCall, PrettyJsonModule]
 })
 export class RpcModule {}

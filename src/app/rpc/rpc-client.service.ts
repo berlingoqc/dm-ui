@@ -4,7 +4,7 @@ import { ServiceLocator } from '../locator.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-const getAllMethods = (obj): string[] => {
+export const getAllMethods = (obj): string[] => {
   let props = [];
 
   do {
@@ -25,20 +25,27 @@ const getAllMethods = (obj): string[] => {
   return props;
 };
 
-export interface RPCCall {
+export class RPCCall {
   jsonrpc: string;
   id: string;
   params: any[];
   method: string;
-  result: any[];
+  result: any;
+  error: any;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class RPPClientSettings {
-  url: string = 'localhost:4200';
-  urlsocket: string = 'ws://localhost:4200';
+  url: string = 'localhost:3434';
+
+  getHttpURL(): string {
+    return 'http://' + this.url + '/jsonrpc';
+  }
+  getWsURL(): string {
+    return 'ws://' + this.url + '/jsonrpc';
+  }
 }
 
 @Injectable()

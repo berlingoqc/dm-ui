@@ -6,6 +6,8 @@
   <mat-card-content>
     <h3>Params</h3>
     <hr />
-    <mat-list> </mat-list>
+    <mat-list>
+      <mat-list-item *ngFor="let param of task.params">{{ param.name }}</mat-list-item>
+    </mat-list>
   </mat-card-content>
 </mat-card>

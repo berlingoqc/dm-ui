@@ -13,6 +13,8 @@ import { RpcModule } from './rpc/rpc.module';
 import { TaskModule } from './task/task.module';
 import { PipelineModule } from './pipeline/pipeline.module';
 import { SettingsModule } from './settings/settings.module';
+import { RPCClientSocket } from './rpc/rpc-ws-client.service';
+import { Aria2WS } from './aria2/aria2rpc.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,10 +35,8 @@ import { SettingsModule } from './settings/settings.module';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(private injector2: Injector, client: RPCSystemCall) {
+  constructor(private injector2: Injector, client: RPCClientSocket, ariaSocket: Aria2WS) {
     ServiceLocator.injector = this.injector2;
-    client.ListNamespace().subscribe(x => {
-      console.log('OVEr ', x);
-    });
+    client.init();
   }
 }

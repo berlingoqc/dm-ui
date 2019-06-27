@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RPCClientSocket } from './rpc/rpc-ws-client.service';
 
 @Component({
   selector: 'app-root',
