@@ -22,7 +22,7 @@ export class QueueComponent implements OnInit {
   dataSource: Aria2Status[];
 
   offset: number = 0;
-  numberShow: number = 10;
+  numberShow: number = 100;
 
   sub: Subscription;
 

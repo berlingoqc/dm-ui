@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Pipeline, PipelineRPCClient } from '../../pipeline-rpc';
 import { pipe } from '@angular/core/src/render3';
 import { Observable } from 'rxjs';
@@ -19,7 +19,7 @@ import { Observable } from 'rxjs';
   `
 })
 export class RegisterComponent implements OnInit {
-  wanna = false;
+  @Input() wanna = false;
   pipelines: Pipeline[];
 
   selected: string;

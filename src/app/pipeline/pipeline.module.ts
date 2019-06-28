@@ -7,8 +7,14 @@ import { TablePipelineComponent } from './component/table-pipeline/table-pipelin
 import { PipelineComponent } from './component/pipeline/pipeline.component';
 import { PipelineRoutingModule } from './pipeline-routing.module';
 import { TaskModule } from '../task/task.module';
-import { PipelineRPCClient } from './pipeline-rpc';
+import { PipelineRPCClient, TrRPCClient } from './pipeline-rpc';
 import { RegisterComponent } from './component/register/register.component';
+import { TableActivePipelineComponent } from './component/table-active-pipeline/table-active-pipeline.component';
+import { TableRegisterPipelineComponent } from './component/table-register-pipeline/table-register-pipeline.component';
+import {
+  RegisterStandaloneComponent,
+  RegisterButton
+} from './component/register-standalone/register-standalone.component';
 
 @NgModule({
   declarations: [
@@ -16,10 +22,15 @@ import { RegisterComponent } from './component/register/register.component';
     FormPipelineComponent,
     TablePipelineComponent,
     PipelineComponent,
-    RegisterComponent
+    RegisterComponent,
+    TableActivePipelineComponent,
+    TableRegisterPipelineComponent,
+    RegisterStandaloneComponent,
+    RegisterButton
   ],
   imports: [CommonModule, TaskModule, PipelineRoutingModule, MatModule],
-  providers: [PipelineRPCClient],
-  exports: [RegisterComponent]
+  providers: [PipelineRPCClient, TrRPCClient],
+  entryComponents: [RegisterStandaloneComponent],
+  exports: [RegisterComponent, RegisterButton]
 })
 export class PipelineModule {}

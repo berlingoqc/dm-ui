@@ -44,6 +44,9 @@
         <mat-chip><mat-icon (click)="deleteItem(element.gid)">delete</mat-icon></mat-chip>
         <mat-chip><mat-icon (click)="onItemUpward(element.gid)">arrow_upward</mat-icon></mat-chip>
         <mat-chip><mat-icon (click)="onItemDownward(element.gid)">arrow_downward</mat-icon></mat-chip>
+        <mat-chip
+          ><app-register-button [data]="{ provider: 'aria2', data: [{ gid: element.gid }] }"></app-register-button
+        ></mat-chip>
       </mat-chip-list>
     </td>
   </ng-container>

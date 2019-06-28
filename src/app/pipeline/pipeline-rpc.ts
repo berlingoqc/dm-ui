@@ -1,6 +1,8 @@
+import { ActivePipelineStatus } from './pipeline-rpc';
 import { Injectable } from '@angular/core';
 import { Rpcimplement } from '../rpc/rpc-client.service';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { WSRPC } from '../rpc/rpc-ws-client.service';
 
 export interface TaskNode {
   taskid: string;
@@ -21,6 +23,21 @@ export interface ActivePipelineStatus {
   taskresult: { [id: string]: any };
 }
 
+export interface RegisterPipeline {
+  file: string;
+  pipeline: string;
+  provider: string;
+  data: any[];
+}
+
+@Rpcimplement('dm', 'tr')
+@Injectable()
+export class TrRPCClient {
+  TriggerRegister(event: string, file: string): Observable<any> {
+    return null;
+  }
+}
+
 @Rpcimplement('dm', 'pipeline')
 @Injectable()
 export class PipelineRPCClient {
@@ -28,7 +45,11 @@ export class PipelineRPCClient {
     return null;
   }
 
-  GetRegister(): Observable<{ [id: string]: string }> {
+  GetRegister(): Observable<{ [id: string]: RegisterPipeline }> {
+    return null;
+  }
+
+  GetActive(): Observable<{ [id: string]: ActivePipelineStatus }> {
     return null;
   }
 
@@ -41,6 +62,41 @@ export class PipelineRPCClient {
   }
 
   Delete(id: string): Observable<any> {
+    return null;
+  }
+
+  DeleteRegister(id: string): Observable<any> {
+    return null;
+  }
+}
+
+@WSRPC('dm', 'pipeline')
+@Injectable({
+  providedIn: 'root'
+})
+export class PipelineWS {
+  onPipelineStart(): Subject<any> {
+    return null;
+  }
+  onPipelineEnd(): Subject<any> {
+    return null;
+  }
+  onPipelineError(): Subject<any> {
+    return null;
+  }
+  onTaskEnd(): Subject<any> {
+    return null;
+  }
+  onTaskStart(): Subject<any> {
+    return null;
+  }
+  onTaskError(): Subject<any> {
+    return null;
+  }
+  onPipelineRegisterUpdate(): Subject<any> {
+    return null;
+  }
+  onPipelineActiveUpdate(): Subject<any> {
     return null;
   }
 }
