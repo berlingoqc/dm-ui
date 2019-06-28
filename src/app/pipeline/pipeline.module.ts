@@ -7,9 +7,19 @@ import { TablePipelineComponent } from './component/table-pipeline/table-pipelin
 import { PipelineComponent } from './component/pipeline/pipeline.component';
 import { PipelineRoutingModule } from './pipeline-routing.module';
 import { TaskModule } from '../task/task.module';
+import { PipelineRPCClient } from './pipeline-rpc';
+import { RegisterComponent } from './component/register/register.component';
 
 @NgModule({
-  declarations: [FormNodeComponent, FormPipelineComponent, TablePipelineComponent, PipelineComponent],
-  imports: [CommonModule, TaskModule, PipelineRoutingModule, MatModule]
+  declarations: [
+    FormNodeComponent,
+    FormPipelineComponent,
+    TablePipelineComponent,
+    PipelineComponent,
+    RegisterComponent
+  ],
+  imports: [CommonModule, TaskModule, PipelineRoutingModule, MatModule],
+  providers: [PipelineRPCClient],
+  exports: [RegisterComponent]
 })
 export class PipelineModule {}

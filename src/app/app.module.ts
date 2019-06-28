@@ -1,3 +1,4 @@
+import { PipelineRPCClient } from './pipeline/pipeline-rpc';
 import { Aria2Module } from './aria2/aria2.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -39,7 +40,7 @@ import { showMessagObservable } from './utility/snackbar';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(private injector2: Injector, client: RPCClientSocket, ariaSocket: Aria2WS) {
+  constructor(private injector2: Injector, client: RPCClientSocket, ariaSocket: Aria2WS, pipeline: PipelineRPCClient) {
     ServiceLocator.injector = this.injector2;
     client.init();
     showMessagObservable(ariaSocket.onDownloadStart(), () => 'A download just start');

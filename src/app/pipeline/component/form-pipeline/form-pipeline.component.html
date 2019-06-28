@@ -4,20 +4,20 @@
   <mat-card-content>
     <div class="top-form">
       <mat-form-field>
-        <input matInput placeholder="Unique ID" />
+        <input matInput placeholder="Unique ID" [(ngModel)]="pipeline.id" />
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Pipeline name" />
+        <input matInput placeholder="Pipeline name" [(ngModel)]="pipeline.name" />
       </mat-form-field>
       <hr />
     </div>
     <div class="">
       <h4>Starting node</h4>
-      <app-form-node></app-form-node>
+      <app-form-node [node]="pipeline.node"></app-form-node>
     </div>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button>Create</button>
-    <button mat-button>Reset</button>
+    <button mat-button (click)="onCreatePipeline()">Create</button>
+    <button mat-button (click)="onResetPipeline()">Reset</button>
   </mat-card-actions>
 </mat-card>

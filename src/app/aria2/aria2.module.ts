@@ -8,6 +8,7 @@ import { Aria2Component } from './aria2/aria2.component';
 import { Aria2RoutingModule } from './aria2-routing.module';
 import { DialogAddDownloadComponent } from './component/dialog-add-download/dialog-add-download.component';
 import { ButtonAddDownloadComponent } from './component/button-add-download/button-add-download.component';
+import { PipelineModule } from '../pipeline/pipeline.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { ButtonAddDownloadComponent } from './component/button-add-download/butt
     DialogAddDownloadComponent,
     ButtonAddDownloadComponent
   ],
-  imports: [CommonModule, MatModule, Aria2RoutingModule],
+  imports: [CommonModule, MatModule, Aria2RoutingModule, PipelineModule],
   exports: [AddDownloadComponent],
   providers: [Aria2RPCCall],
   entryComponents: [DialogAddDownloadComponent]
