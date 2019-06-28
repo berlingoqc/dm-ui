@@ -1,13 +1,20 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="app-container">
   <mat-sidenav-container fullscreen class="exemple-container">
-    <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="sideNav.onOpen()">
-      <app-side-nav></app-side-nav>
+    <mat-sidenav class="nav-container" #sidenav mode="side" [(opened)]="opened" (opened)="sideNav.onOpen()">
+      <div class="nav-main">
+        <app-side-nav></app-side-nav>
+      </div>
+      <div class="nav-footer">
+        <app-ws-status></app-ws-status>
+      </div>
     </mat-sidenav>
 
     <mat-sidenav-content>
       <mat-toolbar>
-        <p><mat-checkbox [(ngModel)]="opened"></mat-checkbox></p>
+        <p>
+          <mat-icon (click)="opened = !opened">menu</mat-icon>
+        </p>
       </mat-toolbar>
       <div class="app-body">
         <router-outlet></router-outlet>

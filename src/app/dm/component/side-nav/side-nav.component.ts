@@ -37,9 +37,9 @@ const NAVIGATION = [
     color: ''
   },
   {
-    text: 'Settings',
-    route: 'settings',
-    tooltip: 'Settings, access application settings',
+    text: 'Setting',
+    route: 'setting',
+    tooltip: 'Access application settings',
     color: ''
   }
 ];

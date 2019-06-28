@@ -20,13 +20,16 @@ export class RPCClientSocket {
   private domainSubject = new Map<string, Subject<RPCCall>>();
   private allSubject = new Subject<WSRPCMsg>();
 
-  constructor(private settings: RPPClientSettings) {}
+  connected: boolean = false;
+
+  constructor(public settings: RPPClientSettings) {}
 
   init() {
     console.log(this.settings.getWsURL());
     const sub = webSocket<WSRPCMsg>(this.settings.getWsURL());
     this.subscription = sub.subscribe(d => this.handler(d), e => this.handlerError(e));
   }
+
   getEventSubject(ressource: string): Subject<any> {
     let data = this.subjects.get(ressource);
     if (data === undefined) {
@@ -60,6 +63,7 @@ export class RPCClientSocket {
   }
 
   private handler(message: WSRPCMsg) {
+    this.connected = true;
     this.sendRessource(message);
     this.sendDomain(message);
     this.sendAll(message);
@@ -92,6 +96,7 @@ export class RPCClientSocket {
 
   private handlerError(error: any) {
     console.log('ERROR ', error);
+    this.connected = false;
   }
 }
 

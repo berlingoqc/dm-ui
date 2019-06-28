@@ -5,3 +5,18 @@
   left: 0;
   right: 0;
 }
+.app-body {
+  padding: 10px;
+}
+
+.nav-container {
+  display: flex;
+}
+
+.nav-main {
+  flex-grow: 1;
+}
+
+.nav-footer {
+  align-self: flex-end;
+}
