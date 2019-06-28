@@ -9,6 +9,7 @@ import { MatModule } from '../mat/mat.module';
 @NgModule({
   declarations: [CardTaskInfoComponent, ComboboxTaskComponent, TaskPageComponent],
   providers: [TaskRPCCall],
-  imports: [CommonModule, MatModule]
+  imports: [CommonModule, MatModule],
+  exports: [ComboboxTaskComponent]
 })
 export class TaskModule {}

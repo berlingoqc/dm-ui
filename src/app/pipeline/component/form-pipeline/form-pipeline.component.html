@@ -1,3 +1,23 @@
-<p>
-  form-pipeline works!
-</p>
+<mat-card>
+  <mat-card-title>New Pipeline</mat-card-title>
+  <mat-card-subtitle>Create a new pipeline to execute on a file</mat-card-subtitle>
+  <mat-card-content>
+    <div class="top-form">
+      <mat-form-field>
+        <input matInput placeholder="Unique ID" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Pipeline name" />
+      </mat-form-field>
+      <hr />
+    </div>
+    <div class="">
+      <h4>Starting node</h4>
+      <app-form-node></app-form-node>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>Create</button>
+    <button mat-button>Reset</button>
+  </mat-card-actions>
+</mat-card>

@@ -1,3 +1,44 @@
-<p>
-  form-node works!
-</p>
+<mat-card>
+  <mat-card-title>Node</mat-card-title>
+  <mat-card-subtitle *ngIf="level > 0">
+    <button mat-button><mat-icon>delete</mat-icon></button>
+  </mat-card-subtitle>
+  <mat-card-content>
+    <div class="top-form">
+      <mat-form-field>
+        <mat-select (selectionChange)="taskSelected($event)">
+          <mat-option *ngFor="let t of taskList" value="{{ t.name }}"
+            ><b>{{ t.name }}</b> {{ ' ' + t.description }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Unique ID" />
+      </mat-form-field>
+      <hr />
+    </div>
+    <div *ngIf="selectedTask">
+      <div *ngIf="selectedTask.params.length > 0">
+        <h4>Params</h4>
+        <hr />
+        <div class="top-form">
+          <mat-form-field *ngFor="let p of selectedTask.params">
+            <input matInput placeholder="{{ p.name }}" />
+          </mat-form-field>
+        </div>
+      </div>
+      <div *ngIf="selectedTask.numberreturn == 0">
+        <h4>Output</h4>
+        <hr />
+        <div *ngFor="let node of childNode; index as i" class="">
+          <div *ngIf="node">
+            <app-form-node [taskList]="taskList"></app-form-node>
+          </div>
+          <div *ngIf="!node">
+            <button (click)="addTask(i)"><mat-icon>add</mat-icon></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -17,6 +17,7 @@ import { RPCClientSocket } from './rpc/rpc-ws-client.service';
 import { Aria2WS } from './aria2/aria2rpc.service';
 import { SideNavComponent } from './dm/component/side-nav/side-nav.component';
 import { DmModule } from './dm/dm.module';
+import { showMessagObservable } from './utility/snackbar';
 
 @NgModule({
   declarations: [AppComponent],
@@ -41,5 +42,6 @@ export class AppModule {
   constructor(private injector2: Injector, client: RPCClientSocket, ariaSocket: Aria2WS) {
     ServiceLocator.injector = this.injector2;
     client.init();
+    showMessagObservable(ariaSocket.onDownloadStart(), () => 'A download just start');
   }
 }
