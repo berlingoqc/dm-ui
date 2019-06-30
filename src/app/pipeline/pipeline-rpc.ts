@@ -49,7 +49,7 @@ export class PipelineRPCClient {
     return null;
   }
 
-  GetActive(): Observable<{ [id: string]: ActivePipelineStatus }> {
+  GetActive(): Observable<ActivePipelineStatus[]> {
     return null;
   }
 
@@ -82,6 +82,10 @@ export class PipelineWS {
     return null;
   }
   onPipelineError(): Subject<any> {
+    return null;
+  }
+
+  onPipelineStatusUpdate(): Subject<any> {
     return null;
   }
   onTaskEnd(): Subject<any> {

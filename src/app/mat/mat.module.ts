@@ -18,7 +18,8 @@ import {
   MatSidenavModule,
   MatTooltipModule,
   MatBottomSheetModule,
-  MatSelectModule
+  MatSelectModule,
+  MatExpansionModule
 } from '@angular/material';
 
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -52,7 +53,8 @@ const MAT_MODULE = [
   MatTooltipModule,
   MatToolbarModule,
   MatBottomSheetModule,
-  MatSelectModule
+  MatSelectModule,
+  MatExpansionModule
 ];
 
 @NgModule({
