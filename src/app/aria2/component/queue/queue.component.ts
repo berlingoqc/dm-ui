@@ -51,7 +51,13 @@ export class QueueComponent implements OnInit {
   }
 
   deleteItem(gid: string) {
-    showMessagObservable(this.aria.remove(gid), data => data);
+    let obs: Observable<any>;
+    if (this.mode === TableMode.STOPPED) {
+      obs = this.aria.removeDownloadResult(gid);
+    } else {
+      obs = this.aria.remove(gid);
+    }
+    showMessagObservable(obs, data => data);
   }
 
   onItemDownward(gid: string) {}

@@ -9,6 +9,9 @@ import { Aria2RoutingModule } from './aria2-routing.module';
 import { DialogAddDownloadComponent } from './component/dialog-add-download/dialog-add-download.component';
 import { ButtonAddDownloadComponent } from './component/button-add-download/button-add-download.component';
 import { PipelineModule } from '../pipeline/pipeline.module';
+import { StatComponent } from './component/stat/stat.component';
+import { SettingsComponent } from './component/settings/settings.component';
+import { VersionComponent } from './component/version/version.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { PipelineModule } from '../pipeline/pipeline.module';
     QueueComponent,
     Aria2Component,
     DialogAddDownloadComponent,
-    ButtonAddDownloadComponent
+    ButtonAddDownloadComponent,
+    StatComponent,
+    SettingsComponent,
+    VersionComponent
   ],
   imports: [CommonModule, MatModule, Aria2RoutingModule, PipelineModule],
   exports: [AddDownloadComponent],
