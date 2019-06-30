@@ -17,8 +17,19 @@ export class TableActivePipelineComponent implements OnInit {
 
   ngOnInit() {
     this.update();
+
     this.socket.onPipelineActiveUpdate().subscribe(() => {
+      console.log('onActivePipelineUpdate');
       this.update();
+    });
+    this.socket.onPipelineStart().subscribe(() => {
+      console.log('onPipelineStart');
+    });
+    this.socket.onPipelineEnd().subscribe(() => {
+      console.log('onPipelineEnd');
+    });
+    this.socket.onTaskUpdate().subscribe(() => {
+      console.log('onTaskUpdate');
     });
   }
 
@@ -26,5 +37,8 @@ export class TableActivePipelineComponent implements OnInit {
     this.subscription = this.client.GetActive().subscribe(this.handlerSocket);
   }
 
-  handlerSocket(data: ActivePipelineStatus[]) {}
+  handlerSocket(data: ActivePipelineStatus[]) {
+    this.active = data;
+    console.log(this.active);
+  }
 }

@@ -97,6 +97,9 @@ export class PipelineWS {
   onTaskError(): Subject<any> {
     return null;
   }
+  onTaskUpdate(): Subject<any> {
+    return null;
+  }
   onPipelineRegisterUpdate(): Subject<any> {
     return null;
   }
