@@ -39,12 +39,13 @@ export class RPCCall {
 })
 export class RPPClientSettings {
   url: string = 'localhost:3434';
+  secure: boolean = false;
 
   getHttpURL(): string {
-    return 'http://' + this.url + '/jsonrpc';
+    return (this.secure ? 'https' : 'http') + '://' + this.url + '/jsonrpc';
   }
   getWsURL(): string {
-    return 'ws://' + this.url + '/jsonrpc';
+    return (this.secure ? 'wss' : 'ws') + '://' + this.url + '/jsonrpc';
   }
 }
 
@@ -83,7 +84,7 @@ export class RPCClient {
   }
 
   private getRPCEndpoint(): string {
-    return 'http://' + this.settings.url + '/jsonrpc';
+    return this.settings.getHttpURL();
   }
 }
 
