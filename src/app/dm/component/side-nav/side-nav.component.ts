@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Router, NavigationStart, Event, NavigationEnd } from '@angular/router';
 
 const SELECTED_COLOR = 'primary';
 const UNSELECTED_COLOR = 'warn';
@@ -51,7 +51,17 @@ const NAVIGATION = [
 })
 export class SideNavComponent implements OnInit {
   navigation: NavigationOption[] = NAVIGATION;
-  constructor(public router: Router) {}
+
+  @Output() zoneChange = new EventEmitter<string>();
+  constructor(public router: Router) {
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationEnd) {
+        const route = this.router.url.substr(1).split('/')[0];
+        this.zoneChange.emit(route);
+        this.setColor(route);
+      }
+    });
+  }
 
   ngOnInit() {}
 
@@ -61,7 +71,6 @@ export class SideNavComponent implements OnInit {
   }
   onNavigate(url: string) {
     this.router.navigate([url]);
-    this.setColor(url);
   }
 
   setColor(route: string) {

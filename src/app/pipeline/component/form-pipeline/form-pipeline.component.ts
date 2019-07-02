@@ -11,7 +11,7 @@ import { Pipe } from '@angular/compiler/src/core';
   styleUrls: ['./form-pipeline.component.sass']
 })
 export class FormPipelineComponent implements OnInit {
-  pipeline: Pipeline = { node: {} as TaskNode } as Pipeline;
+  @Input() pipeline: Pipeline = { node: {} as TaskNode } as Pipeline;
   constructor(private client: PipelineRPCClient) {
     if (this.pipeline == null) {
       this.onResetPipeline();

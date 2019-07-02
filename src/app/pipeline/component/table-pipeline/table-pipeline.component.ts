@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { Pipeline, PipelineRPCClient } from './../../pipeline-rpc';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./table-pipeline.component.sass']
 })
 export class TablePipelineComponent implements OnInit {
+  pipeline: Pipeline[];
+  displayColumns: string[] = ['id', 'name', 'options'];
 
-  constructor() { }
+  constructor(private client: PipelineRPCClient, private route: Router) {}
 
-  ngOnInit() {
+  goEdit(id: string) {
+    this.route.navigate(['pipeline/edit'], { queryParams: { id: id } });
   }
 
+  ngOnInit() {
+    this.client.GetPipelines().subscribe(data => {
+      this.pipeline = Object.values(data[0]).map(x => {
+        return x;
+      });
+    });
+  }
 }

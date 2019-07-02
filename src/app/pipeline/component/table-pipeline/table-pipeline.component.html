@@ -1,3 +1,21 @@
-<p>
-  table-pipeline works!
-</p>
+<table mat-table [dataSource]="pipeline" class="mat-elevation-z8">
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>ID</th>
+    <td mat-cell *matCellDef="let e">{{ e.id }}</td>
+  </ng-container>
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td mat-cell *matCellDef="let e">{{ e.name }}</td>
+  </ng-container>
+  <ng-container matColumnDef="options">
+    <th mat-header-cell *matHeaderCellDef>Options</th>
+    <td mat-cell *matCellDef="let e">
+      <mat-chip-list>
+        <mat-chip><mat-icon (click)="goEdit(e.id)">launch</mat-icon></mat-chip>
+      </mat-chip-list>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayColumns"></tr>
+</table>

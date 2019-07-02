@@ -19,9 +19,11 @@ import { Aria2WS } from './aria2/aria2rpc.service';
 import { SideNavComponent } from './dm/component/side-nav/side-nav.component';
 import { DmModule } from './dm/dm.module';
 import { showMessagObservable } from './utility/snackbar';
+import { HomeComponent } from './home/home.component';
+import { UtilityModule } from './utility/utility.module';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HomeComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -34,7 +36,8 @@ import { showMessagObservable } from './utility/snackbar';
     TaskModule,
     PipelineModule,
     SettingsModule,
-    DmModule
+    DmModule,
+    UtilityModule
   ],
   providers: [],
   bootstrap: [AppComponent]

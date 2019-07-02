@@ -15,6 +15,9 @@ import {
   RegisterStandaloneComponent,
   RegisterButton
 } from './component/register-standalone/register-standalone.component';
+import { EditPipelineComponent } from './component/edit-pipeline/edit-pipeline.component';
+import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { UtilityModule } from '../utility/utility.module';
 
 @NgModule({
   declarations: [
@@ -27,9 +30,11 @@ import {
     TableActivePipelineComponent,
     TableRegisterPipelineComponent,
     RegisterStandaloneComponent,
-    RegisterButton
+    RegisterButton,
+    EditPipelineComponent,
+    DashboardComponent
   ],
-  imports: [CommonModule, TaskModule, PipelineRoutingModule, MatModule],
+  imports: [CommonModule, TaskModule, PipelineRoutingModule, MatModule, UtilityModule],
   providers: [PipelineRPCClient, TrRPCClient],
   entryComponents: [RegisterStandaloneComponent, FormPipelineDialog],
   exports: [RegisterComponent, RegisterButton]

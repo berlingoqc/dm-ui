@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Rpcimplement } from '../rpc/rpc-client.service';
 import { Observable, Subject } from 'rxjs';
 import { WSRPC } from '../rpc/rpc-ws-client.service';
+import { Pipe } from '@angular/compiler/src/core';
 
 export interface TaskNode {
   taskid: string;
@@ -42,6 +43,9 @@ export class TrRPCClient {
 @Injectable()
 export class PipelineRPCClient {
   GetPipelines(): Observable<{ [id: string]: Pipeline }> {
+    return null;
+  }
+  GetPipeline(id: string): Observable<Pipeline> {
     return null;
   }
 

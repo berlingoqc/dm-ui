@@ -1,14 +1,15 @@
 import { RouterModule, Routes } from '@angular/router';
 
-import { DashboardComponent } from './ydl-ui/dashboard/dashboard.component';
 import { NgModule } from '@angular/core';
 import { TaskPageComponent } from './task/page/task-page/task-page.component';
 import { BackendSettingsComponent } from './settings/component/backend-settings/backend-settings.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: DashboardComponent
+    pathMatch: 'full',
+    component: HomeComponent
   },
   {
     path: 'task',
