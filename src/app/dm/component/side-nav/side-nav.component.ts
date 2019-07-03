@@ -37,6 +37,12 @@ const NAVIGATION = [
     color: ''
   },
   {
+    text: 'Backend',
+    route: 'dm',
+    tooltip: 'Acces backend dashboard',
+    color: ''
+  },
+  {
     text: 'Setting',
     route: 'setting',
     tooltip: 'Access application settings',

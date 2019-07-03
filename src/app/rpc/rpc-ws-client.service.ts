@@ -116,3 +116,16 @@ export function WSRPC(namespace: string, subnamespace: string) {
     });
   };
 }
+
+@WSRPC('dm', 'proxyws')
+@Injectable({
+  providedIn: 'root'
+})
+export class ProxyWSWS {
+  onConnectionLost(): Subject<any> {
+    return null;
+  }
+  onConnectionStart(): Subject<any> {
+    return null;
+  }
+}

@@ -40,6 +40,7 @@ export class RPCCall {
 export class RPPClientSettings {
   url: string = 'localhost:3434';
   secure: boolean = false;
+  password: boolean = false;
 
   getHttpURL(): string {
     return (this.secure ? 'https' : 'http') + '://' + this.url + '/jsonrpc';
@@ -114,6 +115,33 @@ export class RPCSystemCall {
     return null;
   }
   ListNamespace(): Observable<string[]> {
+    return null;
+  }
+}
+
+export interface RPCHandlerEndpoint {
+  namespace: string;
+  url: string;
+}
+
+export interface ActiveWSClient {
+  endpoint: RPCHandlerEndpoint;
+  connected: boolean;
+  error: string;
+  conn: any;
+}
+
+@Rpcimplement('dm', 'proxyws')
+@Injectable()
+export class ProxyWSRPC {
+  ActiveClient(): Observable<ActiveWSClient[]> {
+    return null;
+  }
+  ReConnect(namespace: string): Observable<string> {
+    return null;
+  }
+
+  Disconnect(namespace: string): Observable<string> {
     return null;
   }
 }
