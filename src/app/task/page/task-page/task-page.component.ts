@@ -7,13 +7,7 @@ import { TaskRPCCall } from '../../taskrpc.service';
   templateUrl: './task-page.component.html'
 })
 export class TaskPageComponent implements OnInit {
-  task: TaskInfo[] = [];
-  constructor(private taskRpc: TaskRPCCall) {}
+  constructor() {}
 
-  ngOnInit() {
-    this.taskRpc.GetTasks().subscribe((task: any[]) => {
-      this.task = task[0];
-      console.log(this.task);
-    });
-  }
+  ngOnInit() {}
 }

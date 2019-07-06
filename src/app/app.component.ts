@@ -24,6 +24,19 @@ const zoneSettings: Zone[] = [
         icon: 'create'
       }
     ]
+  },
+  {
+    name: 'task',
+    zone: [
+      {
+        destination: 'task',
+        icon: 'home'
+      },
+      {
+        destination: 'task/new/interpretor',
+        icon: 'create'
+      }
+    ]
   }
 ];
 

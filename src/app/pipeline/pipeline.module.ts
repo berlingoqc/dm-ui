@@ -18,6 +18,7 @@ import {
 import { EditPipelineComponent } from './component/edit-pipeline/edit-pipeline.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { UtilityModule } from '../utility/utility.module';
+import { PipelineCanvasComponent } from './component/pipeline-canvas/pipeline-canvas.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { UtilityModule } from '../utility/utility.module';
     RegisterStandaloneComponent,
     RegisterButton,
     EditPipelineComponent,
-    DashboardComponent
+    DashboardComponent,
+    PipelineCanvasComponent
   ],
   imports: [CommonModule, TaskModule, PipelineRoutingModule, MatModule, UtilityModule],
   providers: [PipelineRPCClient, TrRPCClient],

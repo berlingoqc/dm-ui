@@ -12,10 +12,6 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'task',
-    component: TaskPageComponent
-  },
-  {
     path: 'setting',
     component: BackendSettingsComponent
   }

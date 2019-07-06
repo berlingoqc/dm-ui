@@ -1,3 +1,4 @@
+import { InterpretorTask } from './taskrpc.service';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Rpcimplement } from '../rpc/rpc-client.service';
@@ -16,10 +17,24 @@ export interface TaskInfo {
   numberreturn: number;
 }
 
+export interface InterpretorTask {
+  interpretor: string;
+  file: string;
+  info: TaskInfo;
+}
+
 @Rpcimplement('dm', 'task')
 @Injectable()
 export class TaskRPCCall {
   GetTasks(): Observable<TaskInfo[]> {
+    return null;
+  }
+
+  SaveTaskScript(task: InterpretorTask, data: []): Observable<any> {
+    return null;
+  }
+
+  DeleteTaskScript(id: string): Observable<any> {
     return null;
   }
 }
