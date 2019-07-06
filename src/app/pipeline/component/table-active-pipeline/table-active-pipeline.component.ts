@@ -34,7 +34,7 @@ export class TableActivePipelineComponent implements OnInit {
   }
 
   update() {
-    this.subscription = this.client.GetActive().subscribe(this.handlerSocket);
+    this.subscription = this.client.GetActives().subscribe(this.handlerSocket);
   }
 
   handlerSocket(data: ActivePipelineStatus[]) {

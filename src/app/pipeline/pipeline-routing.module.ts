@@ -1,3 +1,4 @@
+import { PipelineCanvasComponent } from './component/pipeline-canvas/pipeline-canvas.component';
 import { EditPipelineComponent } from './component/edit-pipeline/edit-pipeline.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -21,6 +22,10 @@ const routes: Routes = [
       {
         path: 'new',
         component: FormPipelineComponent
+      },
+      {
+        path: 'canvas',
+        component: PipelineCanvasComponent
       }
     ]
   }

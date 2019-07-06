@@ -31,6 +31,13 @@ export interface RegisterPipeline {
   data: any[];
 }
 
+export interface TaskQueueItem {
+  index: number;
+  tasknode: TaskNode;
+  result: string[];
+  previous: TaskQueueItem;
+}
+
 @Rpcimplement('dm', 'tr')
 @Injectable()
 export class TrRPCClient {
@@ -53,7 +60,11 @@ export class PipelineRPCClient {
     return null;
   }
 
-  GetActive(): Observable<ActivePipelineStatus[]> {
+  GetActives(): Observable<ActivePipelineStatus[]> {
+    return null;
+  }
+
+  GetActive(id: string): Observable<ActivePipelineStatus> {
     return null;
   }
 

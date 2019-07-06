@@ -24,4 +24,8 @@ export class TablePipelineComponent implements OnInit {
       });
     });
   }
+
+  toPipelineCanvas(id: string)  {
+    this.route.navigate(['pipeline/canvas'], { queryParams: { id: id}})
+  }
 }
