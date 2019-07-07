@@ -10,11 +10,16 @@ export interface Params {
   description: string;
 }
 
+export interface Return {
+  type: string;
+  description: string;
+}
+
 export interface TaskInfo {
   name: string;
   description: string;
   params: Params[];
-  numberreturn: number;
+  return: Return[];
 }
 
 export interface InterpretorTask {

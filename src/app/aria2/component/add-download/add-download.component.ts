@@ -19,7 +19,7 @@ export class AddDownloadComponent implements OnInit {
   addToQueue() {
     this.aria2.addUri([this.url]).subscribe(over => {
       console.log('GID ' + over);
-      if (this.registerComponent.selected !== '') {
+      if (this.registerComponent.pipeline !== null) {
         this.registerComponent.register('aria2', [{ gid: over }]).subscribe(data => {
           console.log(data);
         });

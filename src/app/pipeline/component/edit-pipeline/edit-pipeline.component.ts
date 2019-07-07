@@ -13,6 +13,7 @@ export class EditPipelineComponent implements OnInit {
   constructor(private route: ActivatedRoute, private client: PipelineRPCClient) {
     this.route.queryParams.subscribe(params => {
       this.client.GetPipeline(params['id']).subscribe(data => {
+        console.log(data[0]);
         this.pipeline = data[0];
       });
     });

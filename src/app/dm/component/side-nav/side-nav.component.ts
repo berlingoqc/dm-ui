@@ -25,6 +25,12 @@ const NAVIGATION = [
     color: ''
   },
   {
+    text: 'File',
+    route: 'file',
+    tooltip: 'Browse your file',
+    color: ''
+  },
+  {
     text: 'Pipeline',
     route: 'pipeline',
     tooltip: 'Access pipeline dashboard',

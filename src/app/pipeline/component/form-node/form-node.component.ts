@@ -30,12 +30,10 @@ export class FormNodeComponent implements OnInit {
 
   taskSelected(task: MatSelectChange) {
     this.selectedTask = this.taskList.find(t => t.name == task.value);
-    console.log(this.selectedTask);
-
     this.node.nextnode = [];
-    for (let i = 0; i < this.selectedTask.numberreturn; i++) {
+    this.selectedTask.return.forEach(r => {
       this.node.nextnode.push(null);
-    }
+    });
   }
 
   paramChange(name: string, event) {

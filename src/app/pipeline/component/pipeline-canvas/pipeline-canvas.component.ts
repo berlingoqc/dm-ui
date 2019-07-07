@@ -126,14 +126,18 @@ export class PipelineCanvasComponent implements AfterViewInit {
     if (this.pipeline_id == '') {
       this.route.queryParams.subscribe(params => {
         this.pipeline_id = params['id'];
-        this.rpc.GetPipeline(this.pipeline_id).subscribe(d => {
-          if (d != null) {
-            this.pipeline = d[0];
-            this.createNeededPrimitive();
-          }
-        });
+        this.startListening();
       });
     }
+  }
+
+  startListening() {
+    this.rpc.GetPipeline(this.pipeline_id).subscribe(d => {
+      if (d != null) {
+        this.pipeline = d[0];
+        this.createNeededPrimitive();
+      }
+    });
   }
 
   createNeededPrimitive() {

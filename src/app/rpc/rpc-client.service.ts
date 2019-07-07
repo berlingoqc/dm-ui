@@ -78,7 +78,10 @@ export class RPCClient {
     this.lastCall = rpcCall;
     return this.http.post<RPCCall>(this.getRPCEndpoint(), rpcCall, { headers: this.headers }).pipe(
       map(x => {
-        this.lastOutput = x;
+        if (x.error != null || x.error != undefined) {
+          console.log('THERE IS AN ERROR ', x.error);
+          throw new Error(x.error);
+        }
         return x.result;
       })
     );

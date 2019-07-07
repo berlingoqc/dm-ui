@@ -8,12 +8,12 @@ export function showMessagObservable<T>(obs: Observable<T>, format: (T) => strin
   obs.subscribe(
     data => {
       service.open(format(data), 'X', {
-        duration: 2000
+        duration: 5000
       });
     },
     error => {
       service.open('Error ' + error, 'X', {
-        duration: 2000
+        duration: 5000
       });
     }
   );

@@ -1,3 +1,4 @@
+import { FileTableComponent } from './fileexplorer/file-table/file-table.component';
 import { RouterModule, Routes } from '@angular/router';
 
 import { NgModule } from '@angular/core';
@@ -10,6 +11,10 @@ const routes: Routes = [
     path: '',
     pathMatch: 'full',
     component: HomeComponent
+  },
+  {
+    path: 'file',
+    component: FileTableComponent
   },
   {
     path: 'setting',

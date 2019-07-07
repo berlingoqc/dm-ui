@@ -11,6 +11,10 @@
       </mat-form-field>
       <hr />
     </div>
+    <div class="variables">
+      <h4>Variables</h4>
+      <app-form-variables [list]="pipeline.variables"></app-form-variables>
+    </div>
     <div class="">
       <h4>Starting node</h4>
       <app-form-node [node]="pipeline.node"></app-form-node>

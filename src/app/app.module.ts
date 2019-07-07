@@ -21,6 +21,7 @@ import { DmModule } from './dm/dm.module';
 import { showMessagObservable } from './utility/snackbar';
 import { HomeComponent } from './home/home.component';
 import { UtilityModule } from './utility/utility.module';
+import { FileexplorerModule } from './fileexplorer/fileexplorer.module';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
@@ -37,7 +38,8 @@ import { UtilityModule } from './utility/utility.module';
     PipelineModule,
     SettingsModule,
     DmModule,
-    UtilityModule
+    UtilityModule,
+    FileexplorerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

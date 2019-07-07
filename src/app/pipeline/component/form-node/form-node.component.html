@@ -24,7 +24,7 @@
           </mat-form-field>
         </div>
       </div>
-      <div *ngIf="selectedTask.numberreturn != 0">
+      <div *ngIf="selectedTask.return.length != 0">
         <h4>Output</h4>
         <hr />
         <div *ngFor="let n of node.nextnode; index as i" class="">
@@ -36,8 +36,12 @@
               [taskList]="taskList"
             ></app-form-node>
           </div>
-          <div *ngIf="!node">
-            <button (click)="addTask(i)"><mat-icon>add</mat-icon></button>
+          <div *ngIf="!n">
+            <div>
+              <button mat-button (click)="addTask(i)">
+                <mat-icon>add</mat-icon>{{ selectedTask.return[i].description }}
+              </button>
+            </div>
           </div>
         </div>
       </div>

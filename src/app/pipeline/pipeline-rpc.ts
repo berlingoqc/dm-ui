@@ -11,9 +11,16 @@ export interface TaskNode {
   nextnode: TaskNode[];
 }
 
+export interface Variable {
+  name: string;
+  type: string;
+  description: string;
+}
+
 export interface Pipeline {
   id: string;
   name: string;
+  variables: Variable[];
   node: TaskNode;
 }
 
