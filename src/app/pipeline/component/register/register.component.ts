@@ -1,3 +1,4 @@
+import { Variable, ActivePipelineStatus } from './../../pipeline-rpc';
 import { Pipe } from '@angular/compiler/src/core';
 import { Component, OnInit, Input } from '@angular/core';
 import { Pipeline, PipelineRPCClient } from '../../pipeline-rpc';
@@ -16,8 +17,9 @@ import { Observable } from 'rxjs';
       <div *ngIf="pipeline != null">
         <h4>Pipeline Variables</h4>
 
-        <mat-form-field *ngFor="let v of pipeline.variables">
+        <mat-form-field (change)="changeVariable(v, $event)" *ngFor="let v of pipeline.variables">
           <input matInput placeholder="{{ v.name }}" />
+          <mat-hint>{{ v.description }}</mat-hint>
         </mat-form-field>
       </div>
     </div>
@@ -28,6 +30,8 @@ export class RegisterComponent {
 
   pipeline: Pipeline;
 
+  variables: { [id: string]: any } = {};
+
   constructor(private client: PipelineRPCClient) {}
 
   change(pipeline: Pipeline) {
@@ -35,7 +39,17 @@ export class RegisterComponent {
     console.log(this.pipeline);
   }
 
+  changeVariable(variable: Variable, newVar: Event) {
+    const value = (newVar.target as HTMLInputElement).value;
+    this.variables[variable.name] = value;
+    console.log(this.variables);
+  }
+
   register(provider: string, data): Observable<any> {
-    return this.client.Register(provider, this.pipeline.id, data);
+    return this.client.Register(provider, this.pipeline.id, data, this.variables);
+  }
+
+  active(file: string): Observable<ActivePipelineStatus> {
+    return this.client.StartOnLocalFile(file, this.pipeline.id, this.variables);
   }
 }

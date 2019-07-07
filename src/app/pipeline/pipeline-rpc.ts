@@ -7,6 +7,7 @@ import { Pipe } from '@angular/compiler/src/core';
 
 export interface TaskNode {
   taskid: string;
+  nodeid: string;
   params: { [id: string]: any };
   nextnode: TaskNode[];
 }
@@ -75,7 +76,11 @@ export class PipelineRPCClient {
     return null;
   }
 
-  Register(handler: string, pipeline: string, data: any): Observable<any> {
+  Register(handler: string, pipeline: string, data: any, variable: any): Observable<any> {
+    return null;
+  }
+
+  StartOnLocalFile(filepath: string, pipelineid: string, data: any): Observable<ActivePipelineStatus> {
     return null;
   }
 

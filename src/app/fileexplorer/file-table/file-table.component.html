@@ -20,7 +20,7 @@
       <th mat-header-cell *matHeaderCellDef>Option</th>
       <td mat-cell *matCellDef="let e">
         <mat-chip-list>
-          <mat-chip (click)="registerPipeline(e)"><mat-icon>timeline</mat-icon></mat-chip>
+          <app-register-button [data]="{ mode: 'active', file: e.path + e.name }"></app-register-button>
         </mat-chip-list>
       </td>
     </ng-container>

@@ -5,6 +5,8 @@ import { RegisterComponent } from '../register/register.component';
 import { showMessagObservable } from 'src/app/utility/snackbar';
 
 class StandaloneData {
+  mode: 'register' | 'active';
+  file: string;
   provider: string;
   data: any;
 }
@@ -13,8 +15,9 @@ class StandaloneData {
   selector: 'app-register-standalone',
   template: `
     <div>
+      <h4>{{ data.file }}</h4>
       <app-register [wanna]="true"></app-register>
-      <button mat-button (click)="register()">Register</button>
+      <button mat-button (click)="register()">Add</button>
     </div>
   `,
   styleUrls: ['./register-standalone.component.sass']
@@ -31,7 +34,11 @@ export class RegisterStandaloneComponent implements OnInit {
   ngOnInit() {}
 
   register() {
-    showMessagObservable(this.registerComponent.register(this.data.provider, this.data.data), d => d);
+    if (this.data.mode == 'active') {
+      showMessagObservable(this.registerComponent.active(this.data.file), x => x);
+    } else {
+      showMessagObservable(this.registerComponent.register(this.data.provider, this.data.data), d => d);
+    }
     this.dialogRef.close();
   }
 }
@@ -39,7 +46,9 @@ export class RegisterStandaloneComponent implements OnInit {
 @Component({
   selector: 'app-register-button',
   template: `
-    <button mat-button (click)="openDialog()">Register</button>
+    <mat-chip (click)="openDialog()">
+      <mat-icon>timeline</mat-icon>
+    </mat-chip>
   `
 })
 export class RegisterButton implements OnInit {
@@ -47,9 +56,7 @@ export class RegisterButton implements OnInit {
 
   constructor(public dialog: MatDialog, public client: PipelineRPCClient) {}
 
-  ngOnInit() {
-    //this.client.GetRegister().subscribe(data => {});
-  }
+  ngOnInit() {}
 
   openDialog(): void {
     const dialogRef = this.dialog.open(RegisterStandaloneComponent, { data: this.data });
