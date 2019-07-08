@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 })
 export class TableActivePipelineComponent implements OnInit {
   active: ActivePipelineStatus[];
-  displayColumns = ['pipeline', 'file', 'status', 'running', 'more'];
+  displayColumns = ['status', 'pipeline', 'file', 'running', 'more'];
 
   subscription: Subscription;
   constructor(private client: PipelineRPCClient, private socket: PipelineWS) {}

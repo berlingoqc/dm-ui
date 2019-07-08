@@ -1,16 +1,7 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PipelineRPCClient, PipelineWS, ActivePipelineStatus, TaskNode } from './../../pipeline-rpc';
 import { Component, OnInit, ViewChild, ElementRef, Input, AfterViewInit } from '@angular/core';
 import { Pipeline } from '../../pipeline-rpc';
-
-export enum TaskState {
-  NONE = 0,
-  WAITING,
-  RUNNING,
-  CANCEL,
-  DONE,
-  ERROR
-}
 
 export interface Vec2 {
   x: number;
@@ -154,5 +145,22 @@ export class PipelineCanvasComponent implements AfterViewInit {
     this.cx = this.canvasEl.getContext('2d');
     this.canvasEl.width = this.width;
     this.canvasEl.height = this.height;
+  }
+}
+
+@Component({
+  selector: 'app-pipeline-canvas-button',
+  template: `
+    <mat-chip><mat-icon (click)="toPipelineCanvas()">timeline</mat-icon></mat-chip>
+  `
+})
+export class PipelineCanvasButton {
+  @Input() pipeline_id = '';
+  @Input() active_id = '';
+
+  constructor(private router: Router) {}
+
+  toPipelineCanvas() {
+    this.router.navigate(['pipeline/canvas'], { queryParams: { id: this.pipeline_id, activeid: this.active_id } });
   }
 }

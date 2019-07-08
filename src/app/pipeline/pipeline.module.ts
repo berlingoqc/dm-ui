@@ -23,7 +23,7 @@ import {
 import { EditPipelineComponent } from './component/edit-pipeline/edit-pipeline.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { UtilityModule } from '../utility/utility.module';
-import { PipelineCanvasComponent } from './component/pipeline-canvas/pipeline-canvas.component';
+import { PipelineCanvasComponent, PipelineCanvasButton } from './component/pipeline-canvas/pipeline-canvas.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +41,8 @@ import { PipelineCanvasComponent } from './component/pipeline-canvas/pipeline-ca
     DashboardComponent,
     PipelineCanvasComponent,
     FormVariablesComponent,
-    PipelineSelectComponent
+    PipelineSelectComponent,
+    PipelineCanvasButton
   ],
   imports: [CommonModule, TaskModule, PipelineRoutingModule, MatModule, UtilityModule],
   providers: [PipelineRPCClient, TrRPCClient],
