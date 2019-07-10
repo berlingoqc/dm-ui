@@ -16,28 +16,26 @@ export class TableActivePipelineComponent implements OnInit {
   constructor(private client: PipelineRPCClient, private socket: PipelineWS) {}
 
   ngOnInit() {
-    this.update();
-
-    this.socket.onPipelineActiveUpdate().subscribe(() => {
+    this.socket.onPipelineActiveUpdate().subscribe(d => {
       console.log('onActivePipelineUpdate');
-      this.update();
+      this.active = Object.values(d);
     });
-    this.socket.onPipelineStart().subscribe(() => {
+    this.socket.onPipelineStart().subscribe(d => {
       console.log('onPipelineStart');
+      this.update(d);
     });
-    this.socket.onPipelineEnd().subscribe(() => {
+    this.socket.onPipelineEnd().subscribe(d => {
       console.log('onPipelineEnd');
+      this.update(d);
     });
-    this.socket.onTaskUpdate().subscribe(() => {
+    this.socket.onTaskUpdate().subscribe(d => {
       console.log('onTaskUpdate');
     });
   }
 
-  update() {
-    this.subscription = this.client.GetActives().subscribe((d: any) => {
-      this.active = Object.values(d[0]);
-      console.log(d);
-    });
+  update(d: ActivePipelineStatus) {
+    const i = this.active.findIndex(x => x.file == x.file);
+    this.active[i] = d;
   }
 
   handlerSocket(data: any) {

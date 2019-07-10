@@ -91,7 +91,9 @@ export class RPCClientSocket {
       subject.next(call.error);
       return;
     }
-    subject.next(call.result);
+    if (call.result.length > 0) {
+      subject.next(call.result[0]);
+    }
   }
 
   private handlerError(error: any) {

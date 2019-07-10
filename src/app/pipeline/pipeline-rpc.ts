@@ -27,8 +27,9 @@ export interface Pipeline {
 
 export interface ActivePipelineStatus {
   pipeline: string;
+  file: string;
   state: string;
-  activetask: string[];
+  activetask: string;
   taskresult: { [id: string]: any };
 }
 
@@ -95,6 +96,17 @@ export class PipelineRPCClient {
   DeleteRegister(id: string): Observable<any> {
     return null;
   }
+
+  DeleteActive(id: string): Observable<string> {
+    return null;
+  }
+}
+
+export interface TaskMessage {
+  id: string;
+  files: string[];
+  output: string[];
+  err: string;
 }
 
 @WSRPC('dm', 'pipeline')
@@ -102,35 +114,35 @@ export class PipelineRPCClient {
   providedIn: 'root'
 })
 export class PipelineWS {
-  onPipelineStart(): Subject<any> {
+  onPipelineStart(): Subject<ActivePipelineStatus> {
     return null;
   }
-  onPipelineEnd(): Subject<any> {
+  onPipelineEnd(): Subject<ActivePipelineStatus> {
     return null;
   }
-  onPipelineError(): Subject<any> {
+  onPipelineError(): Subject<ActivePipelineStatus> {
     return null;
   }
 
-  onPipelineStatusUpdate(): Subject<any> {
+  onPipelineStatusUpdate(): Subject<ActivePipelineStatus> {
     return null;
   }
-  onTaskEnd(): Subject<any> {
+  onTaskEnd(): Subject<TaskMessage> {
     return null;
   }
-  onTaskStart(): Subject<any> {
+  onTaskStart(): Subject<string> {
     return null;
   }
-  onTaskError(): Subject<any> {
+  onTaskError(): Subject<TaskMessage> {
     return null;
   }
-  onTaskUpdate(): Subject<any> {
+  onTaskUpdate(): Subject<TaskMessage> {
     return null;
   }
-  onPipelineRegisterUpdate(): Subject<any> {
+  onPipelineRegisterUpdate(): Subject<{ [id: string]: RegisterPipeline }> {
     return null;
   }
-  onPipelineActiveUpdate(): Subject<any> {
+  onPipelineActiveUpdate(): Subject<{ [id: string]: ActivePipelineStatus }> {
     return null;
   }
 }
