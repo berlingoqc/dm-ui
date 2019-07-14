@@ -1,4 +1,4 @@
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MatButtonModule,
   MatCardModule,
@@ -56,7 +56,8 @@ const MAT_MODULE = [
   MatBottomSheetModule,
   MatSelectModule,
   MatExpansionModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  ReactiveFormsModule
 ];
 
 @NgModule({

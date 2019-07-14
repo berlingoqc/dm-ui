@@ -4,10 +4,21 @@
     <mat-card-subtitle>{{ task.description }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <h3>Params</h3>
-    <hr />
-    <mat-list>
-      <mat-list-item *ngFor="let param of task.params">{{ param.name }}</mat-list-item>
-    </mat-list>
+    <div>
+      <h3>Params</h3>
+      <hr />
+      <div *ngFor="let param of task.params" class="param-list">
+        <h5>{{ param.name }}</h5>
+        <p>{{ param.description }}</p>
+      </div>
+    </div>
+    <div>
+      <h3>Output</h3>
+      <hr />
+      <div *ngFor="let return of task.return" class="param-list">
+        <h5>{{ return.type }}</h5>
+        <p>{{ return.description }}</p>
+      </div>
+    </div>
   </mat-card-content>
 </mat-card>

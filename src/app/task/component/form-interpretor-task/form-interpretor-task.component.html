@@ -1,3 +1,65 @@
-<p>
-  <input #file type="file" (change)="onFileSelected($event)" />
-</p>
+<mat-card>
+  <mat-card-title>Create a new task from a script</mat-card-title>
+  <mat-card-subtitle></mat-card-subtitle>
+  <mat-card-content> </mat-card-content>
+</mat-card>
+
+<form
+  [formGroup]="ownerForm"
+  autocomplete="off"
+  novalidate
+  (ngSubmit)="createOwner(ownerForm.value)"
+  class="form-interpretor"
+>
+  <mat-form-field>
+    <input matInput formControlName="description" placeholder="Description of the task" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput formControlName="interpretor" placeholder="Interpretor to run the script with" />
+  </mat-form-field>
+
+  <input type="file" formControlName="input" (change)="onFileSelected($event)" />
+
+  <h3>Params</h3>
+
+  <div class="form-params">
+    <div formArrayName="params" *ngFor="let p of task.info.params; index as i">
+      <div [formGroupName]="i">
+        <mat-form-field>
+          <input matInput placeholder="Name of the paramater" formControlName="name" />
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Description of the usage" formControlName="description" />
+        </mat-form-field>
+      </div>
+      <button mat-icon-button (click)="deleteParam(i)"><mat-icon>delete</mat-icon></button>
+    </div>
+    <button mat-icon-button (click)="addParam()"><mat-icon>add</mat-icon></button>
+  </div>
+
+  <h3>Output</h3>
+
+  <div class="form-params">
+    <div formArrayName="return" *ngFor="let p of task.info.return; index as i">
+      <div [formGroupName]="i">
+        <mat-form-field>
+          <mat-label>Type of the file return</mat-label>
+          <mat-select formControlName="type">
+            <mat-option *ngFor="let t of types" [value]="t">{{ t }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="description" matInput placeholder="Description of the file" />
+        </mat-form-field>
+        <button mat-icon-button (click)="deleteOutput(i)"><mat-icon>delete</mat-icon></button>
+      </div>
+    </div>
+    <button mat-icon-button (click)="addOutput()"><mat-icon>add</mat-icon></button>
+  </div>
+
+  <div class="form-button">
+    <button mat-raised-button color="primary" [disabled]="!ownerForm.valid">Create</button>
+    <button mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+  </div>
+</form>

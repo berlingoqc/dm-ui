@@ -28,6 +28,11 @@ export interface InterpretorTask {
   info: TaskInfo;
 }
 
+export interface InputSaveTaskScript {
+  taskin: InterpretorTask;
+  data: number[];
+}
+
 @Rpcimplement('dm', 'task')
 @Injectable()
 export class TaskRPCCall {
@@ -35,7 +40,7 @@ export class TaskRPCCall {
     return null;
   }
 
-  SaveTaskScript(task: InterpretorTask, data: []): Observable<any> {
+  SaveTaskScript(task: InputSaveTaskScript): Observable<any> {
     return null;
   }
 
