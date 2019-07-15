@@ -1,24 +1,35 @@
 <mat-card class="card">
-  <mat-card-header>
-    <mat-card-title>{{ task.name }}</mat-card-title>
+  <mat-card-header class="header">
+    <mat-card-title class="title">
+      <div>
+        {{ task.name }}
+      </div>
+      <div class="middle"></div>
+      <app-task-option [task]="task"></app-task-option>
+    </mat-card-title>
     <mat-card-subtitle>{{ task.description }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <div>
-      <h3>Params</h3>
-      <hr />
-      <div *ngFor="let param of task.params" class="param-list">
-        <h5>{{ param.name }}</h5>
-        <p>{{ param.description }}</p>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Detail</mat-panel-title>
+      </mat-expansion-panel-header>
+      <div>
+        <h3>Params</h3>
+        <hr />
+        <div *ngFor="let param of task.params" class="param-list">
+          <h5>{{ param.name }}</h5>
+          <p>{{ param.description }}</p>
+        </div>
       </div>
-    </div>
-    <div>
-      <h3>Output</h3>
-      <hr />
-      <div *ngFor="let return of task.return" class="param-list">
-        <h5>{{ return.type }}</h5>
-        <p>{{ return.description }}</p>
+      <div>
+        <h3>Output</h3>
+        <hr />
+        <div *ngFor="let return of task.return" class="param-list">
+          <h5>{{ return.type }}</h5>
+          <p>{{ return.description }}</p>
+        </div>
       </div>
-    </div>
+    </mat-expansion-panel>
   </mat-card-content>
 </mat-card>

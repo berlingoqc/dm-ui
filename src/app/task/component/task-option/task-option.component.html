@@ -1,0 +1,11 @@
+<mat-nav-list>
+  <a mat-list-item>
+    <span mat-line>Execute</span>
+    <span mat-line>Execute this task outside of a pipeline</span>
+  </a>
+
+  <a mat-list-item *ngIf="data.provider == 'interpretor'" (click)="deleteTaskScript()">
+    <span mat-line>Delete</span>
+    <span mat-line>Remove this task from the system</span>
+  </a>
+</mat-nav-list>

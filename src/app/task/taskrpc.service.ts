@@ -18,6 +18,7 @@ export interface Return {
 export interface TaskInfo {
   name: string;
   description: string;
+  provider: string;
   params: Params[];
   return: Return[];
 }

@@ -9,6 +9,7 @@ import { MatModule } from '../mat/mat.module';
 import { FormInterpretorTaskComponent } from './component/form-interpretor-task/form-interpretor-task.component';
 import { FormTaskInfoComponent } from './component/form-task-info/form-task-info.component';
 import { TaskListComponent } from './component/task-list/task-list.component';
+import { TaskOptionComponent, TaskOptionBootSheet } from './component/task-option/task-option.component';
 
 @NgModule({
   declarations: [
@@ -17,10 +18,13 @@ import { TaskListComponent } from './component/task-list/task-list.component';
     TaskPageComponent,
     FormInterpretorTaskComponent,
     FormTaskInfoComponent,
-    TaskListComponent
+    TaskListComponent,
+    TaskOptionComponent,
+    TaskOptionBootSheet
   ],
   providers: [TaskRPCCall],
   imports: [CommonModule, MatModule, TaskRoutingModule],
-  exports: [ComboboxTaskComponent]
+  exports: [ComboboxTaskComponent],
+  entryComponents: [TaskOptionBootSheet]
 })
 export class TaskModule {}
