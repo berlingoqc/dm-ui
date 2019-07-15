@@ -1,9 +1,9 @@
 <div class="mat-elevation-z8">
-  <table mat-table [dataSource]="source">
+  <table mat-table matSort [dataSource]="source">
     <ng-container matColumnDef="type">
       <th mat-header-cell *matHeaderCellDef>Type</th>
       <td mat-cell *matCellDef="let e">
-        <mat-icon>
+        <mat-icon (click)="onNavigate.emit(e)">
           {{ e.isDir ? 'folder' : 'file_copy' }}
         </mat-icon>
       </td>

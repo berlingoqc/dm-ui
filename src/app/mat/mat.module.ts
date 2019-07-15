@@ -20,7 +20,8 @@ import {
   MatBottomSheetModule,
   MatSelectModule,
   MatExpansionModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatSortModule
 } from '@angular/material';
 
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -57,6 +58,7 @@ const MAT_MODULE = [
   MatSelectModule,
   MatExpansionModule,
   MatPaginatorModule,
+  MatSortModule,
   ReactiveFormsModule
 ];
 
