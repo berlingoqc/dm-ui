@@ -12,14 +12,14 @@ export const getAllMethods = (obj): string[] => {
       .concat(Object.getOwnPropertySymbols(obj).map(s => s.toString()))
       .sort()
       .filter(
-        (p, i, arr) => typeof obj[p] === 'function' && p !== 'constructor' //only the methods //&&           //not the constructor
-        //(i == 0 || p !== arr[i - 1]) &&  //not overriding in this prototype
-        //props.indexOf(p) === -1          //not overridden in a child
+        (p, i, arr) => typeof obj[p] === 'function' && p !== 'constructor' // only the methods //&&           //not the constructor
+        // (i == 0 || p !== arr[i - 1]) &&  //not overriding in this prototype
+        // props.indexOf(p) === -1          //not overridden in a child
       );
     props = props.concat(l);
   } while (
-    (obj = Object.getPrototypeOf(obj)) && //walk-up the prototype chain
-    Object.getPrototypeOf(obj) //not the the Object prototype methods (hasOwnProperty, etc...)
+    (obj = Object.getPrototypeOf(obj)) && // walk-up the prototype chain
+    Object.getPrototypeOf(obj) // not the the Object prototype methods (hasOwnProperty, etc...)
   );
 
   return props;
@@ -38,9 +38,9 @@ export class RPCCall {
   providedIn: 'root'
 })
 export class RPPClientSettings {
-  url: string = 'localhost:3434';
-  secure: boolean = false;
-  password: boolean = false;
+  url = 'localhost:4200';
+  secure = false;
+  password = false;
 
   getHttpURL(): string {
     return (this.secure ? 'https' : 'http') + '://' + this.url + '/jsonrpc';
@@ -72,7 +72,7 @@ export class RPCClient {
     const rpcCall = {
       jsonrpc: '2.0',
       id: 'qwer',
-      method: method,
+      method,
       params: args == null || args == undefined ? [] : args
     } as RPCCall;
     this.lastCall = rpcCall;
@@ -98,7 +98,7 @@ export function Rpcimplement(namespace: string, subnamespace: string) {
     methods.forEach(value => {
       console.log('DEFINING ', value);
       Object.defineProperty(Class.prototype, value, {
-        value: function(...args: any) {
+        value(...args: any) {
           const client = ServiceLocator.injector.get(RPCClient);
           client.SetNamespace(namespace);
           return client.ExecuteCall(subnamespace + '.' + value, args);
