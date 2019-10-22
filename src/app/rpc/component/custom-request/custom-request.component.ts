@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
 import { RPCCallInfo } from '../rpc-request/rpc-request.component';
-import { RPCClient } from '../../rpc-client.service';
+import { RPCClient } from 'ngx-jsonrpc';
 
 @Component({
   selector: 'app-custom-request',

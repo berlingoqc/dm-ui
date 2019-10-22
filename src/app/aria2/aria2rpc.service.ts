@@ -1,7 +1,8 @@
-import { Rpcimplement } from '../rpc/rpc-client.service';
-import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { WSRPC } from '../rpc/rpc-ws-client.service';
+
+import { Injectable } from '@angular/core';
+import { Rpcimplement } from 'ngx-jsonrpc';
+import { WSRPC } from 'ngx-jsonrpc';
 
 export interface Aria2Status {
   gid: string;

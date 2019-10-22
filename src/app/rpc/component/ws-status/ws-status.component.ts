@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { RPCClientSocket } from '../../rpc-ws-client.service';
-import { MatBottomSheetRef, MatBottomSheet } from '@angular/material';
+import { MatBottomSheet, MatBottomSheetRef } from '@angular/material';
+
+import { RPCClientSocket } from 'ngx-jsonrpc';
 
 @Component({
   selector: 'app-ws-status',

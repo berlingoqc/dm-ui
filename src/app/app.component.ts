@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 
 import {NavItem} from './utility/chip-list-nav';
-import {RPCClientSocket} from './rpc/rpc-ws-client.service';
+import {RPCClientSocket} from 'ngx-jsonrpc';
 import {SideNavComponent} from './dm/component/side-nav/side-nav.component';
 
 export interface Zone {

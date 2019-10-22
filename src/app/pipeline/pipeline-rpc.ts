@@ -1,9 +1,10 @@
+import { Observable, Subject } from 'rxjs';
+
 import { ActivePipelineStatus } from './pipeline-rpc';
 import { Injectable } from '@angular/core';
-import { Rpcimplement } from '../rpc/rpc-client.service';
-import { Observable, Subject } from 'rxjs';
-import { WSRPC } from '../rpc/rpc-ws-client.service';
 import { Pipe } from '@angular/compiler/src/core';
+import { Rpcimplement } from 'ngx-jsonrpc';
+import { WSRPC } from 'ngx-jsonrpc';
 
 export interface TaskNode {
   taskid: string;

@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
 import { ActiveWSClient, ProxyWSRPC } from '../../rpc-client.service';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-proxy-ws-item',

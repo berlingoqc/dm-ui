@@ -1,6 +1,6 @@
-import { Rpcimplement } from '../rpc/rpc-client.service';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Rpcimplement } from 'ngx-jsonrpc';
 
 export interface RunnerInfo {
   name: string;

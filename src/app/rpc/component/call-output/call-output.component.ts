@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { RPCCall } from '../../rpc-client.service';
+import { Component, Input, OnInit } from '@angular/core';
+
+import { RPCCall } from 'ngx-jsonrpc';
 
 @Component({
   selector: 'app-call-output',

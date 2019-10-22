@@ -1,7 +1,7 @@
+import { Injectable } from '@angular/core';
 import { InterpretorTask } from './taskrpc.service';
 import { Observable } from 'rxjs';
-import { Injectable } from '@angular/core';
-import { Rpcimplement } from '../rpc/rpc-client.service';
+import { Rpcimplement } from 'ngx-jsonrpc';
 
 export interface Params {
   name: string;

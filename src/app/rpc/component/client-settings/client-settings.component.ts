@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RPPClientSettings } from '../../rpc-client.service';
+
+import { RPCClientSettings } from 'ngx-jsonrpc';
 
 @Component({
   selector: 'app-client-settings',
@@ -7,7 +8,7 @@ import { RPPClientSettings } from '../../rpc-client.service';
   styleUrls: ['./client-settings.component.sass']
 })
 export class ClientSettingsComponent implements OnInit {
-  constructor(public settings: RPPClientSettings) {}
+  constructor(public settings: RPCClientSettings) {}
 
   ngOnInit() {}
 }
