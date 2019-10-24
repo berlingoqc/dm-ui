@@ -51,7 +51,7 @@ export class AppComponent implements OnInit {
   opened: false;
   activeSection: Zone;
 
-  @ViewChild(SideNavComponent) sideNav: SideNavComponent;
+  @ViewChild(SideNavComponent, { static: true }) sideNav: SideNavComponent;
 
   constructor() {}
 

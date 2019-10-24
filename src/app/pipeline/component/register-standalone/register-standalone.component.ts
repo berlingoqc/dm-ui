@@ -29,7 +29,7 @@ export class RegisterStandaloneComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: StandaloneData
   ) {}
 
-  @ViewChild(RegisterComponent) registerComponent: RegisterComponent;
+  @ViewChild(RegisterComponent, { static: true }) registerComponent: RegisterComponent;
 
   ngOnInit() {}
 

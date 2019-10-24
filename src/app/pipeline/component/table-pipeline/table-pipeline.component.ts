@@ -1,6 +1,7 @@
-import { Router } from '@angular/router';
-import { Pipeline, PipelineRPCClient } from './../../pipeline-rpc';
 import { Component, OnInit } from '@angular/core';
+import { Pipeline, PipelineRPCClient } from './../../pipeline-rpc';
+
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-table-pipeline',
@@ -14,12 +15,12 @@ export class TablePipelineComponent implements OnInit {
   constructor(private client: PipelineRPCClient, private route: Router) {}
 
   goEdit(id: string) {
-    this.route.navigate(['pipeline/edit'], { queryParams: { id: id } });
+    this.route.navigate(['pipeline/edit'], { queryParams: { id } });
   }
 
   ngOnInit() {
     this.client.GetPipelines().subscribe(data => {
-      this.pipeline = Object.values(data[0]).map(x => {
+      this.pipeline = Object.values(data).map(x => {
         return x;
       });
     });

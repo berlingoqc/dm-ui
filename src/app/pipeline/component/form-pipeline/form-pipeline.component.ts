@@ -1,7 +1,6 @@
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Pipeline, TaskNode, PipelineRPCClient, Variable } from './../../pipeline-rpc';
 import { Component, OnInit, Inject, Injectable, Input } from '@angular/core';
-import { pipe } from '@angular/core/src/render3';
 import { showMessagObservable } from 'src/app/utility/snackbar';
 import { Pipe } from '@angular/compiler/src/core';
 

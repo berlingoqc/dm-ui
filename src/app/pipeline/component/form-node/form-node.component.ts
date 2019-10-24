@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { TaskRPCCall, TaskInfo } from 'src/app/task/taskrpc.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { TaskInfo, TaskRPCCall } from 'src/app/task/taskrpc.service';
+
 import { MatSelectChange } from '@angular/material';
 import { TaskNode } from '../../pipeline-rpc';
 
@@ -11,7 +12,7 @@ import { TaskNode } from '../../pipeline-rpc';
 export class FormNodeComponent implements OnInit {
   @Input() node: TaskNode;
   @Input() taskList: TaskInfo[] = null;
-  @Input() level: number = 0;
+  @Input() level = 0;
   @Output() delete = new EventEmitter();
 
   selectedTask: TaskInfo;
@@ -21,8 +22,8 @@ export class FormNodeComponent implements OnInit {
   ngOnInit() {
     this.node.params = {};
     if (this.taskList === null) {
-      this.task.GetTasks().subscribe((data: any) => {
-        this.taskList = data[0] as TaskInfo[];
+      this.task.GetTasks().subscribe((data: TaskInfo[]) => {
+        this.taskList = data;
         console.log(this.taskList);
       });
     }

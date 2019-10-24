@@ -9,8 +9,8 @@ import { TaskInfo, TaskRPCCall } from '../../taskrpc.service';
 export class TaskListComponent implements OnInit {
   task: TaskInfo[];
   constructor(private taskRpc: TaskRPCCall) {
-    this.taskRpc.GetTasks().subscribe((task: any[]) => {
-      this.task = task[0];
+    this.taskRpc.GetTasks().subscribe((task) => {
+      this.task = task;
       console.log(this.task);
     });
   }

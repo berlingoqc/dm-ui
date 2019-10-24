@@ -1,4 +1,4 @@
-import { OnInit, Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FileExplorerRPClient, FileInfo } from './fe-rpc';
 
 @Component({
@@ -11,7 +11,7 @@ import { FileExplorerRPClient, FileInfo } from './fe-rpc';
 })
 export class FileExplorerComponent implements OnInit {
   files: FileInfo[];
-  path: string = '/';
+  path = '/';
 
   previous_dir: string[] = [];
 
@@ -42,7 +42,7 @@ export class FileExplorerComponent implements OnInit {
 
   private subLs(f: any) {
     if (f != null) {
-      this.files = f[0];
+      this.files = f;
     }
   }
 }

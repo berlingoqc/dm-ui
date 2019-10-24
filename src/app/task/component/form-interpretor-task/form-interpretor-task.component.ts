@@ -1,10 +1,9 @@
-import { FormGroup, FormControl, Validators, FormArray, Form } from '@angular/forms';
-import { TaskRPCCall, InterpretorTask, Params, Return, TaskInfo } from './../../taskrpc.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { showMessagObservable } from 'src/app/utility/snackbar';
-import { enumSelector } from 'src/app/utility/enum';
-import { OutputType } from '@angular/core/src/view';
+import { Form, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { InterpretorTask, Params, Return, TaskInfo, TaskRPCCall } from './../../taskrpc.service';
+
 import { Location } from '@angular/common';
+import { showMessagObservable } from 'src/app/utility/snackbar';
 
 @Component({
   selector: 'app-form-interpretor-task',
@@ -38,17 +37,17 @@ export class FormInterpretorTaskComponent implements OnInit {
 
   hasError = (controlName: string, errorName: string) => {
     return this.ownerForm.controls[controlName].hasError(errorName);
-  };
+  }
 
   onCancel = () => {
     this.location.back();
-  };
+  }
 
   public createOwner = ownerFormValue => {
     if (this.ownerForm.valid) {
       this.executeOwnerCreation(ownerFormValue);
     }
-  };
+  }
 
   private executeOwnerCreation(v) {
     this.task.interpretor = v.interpretor;
@@ -61,7 +60,7 @@ export class FormInterpretorTaskComponent implements OnInit {
   }
 
   onFileSelected(event) {
-    let reader = new FileReader();
+    const reader = new FileReader();
 
     if (event.target.files && event.target.files.length) {
       const [file] = event.target.files;
@@ -82,7 +81,7 @@ export class FormInterpretorTaskComponent implements OnInit {
     const i = this.task.info.params.push({
       name: ''
     } as Params);
-    (this.ownerForm.controls['params'] as FormArray).insert(
+    (this.ownerForm.controls.params as FormArray).insert(
       i,
       new FormGroup({
         name: new FormControl('', [Validators.required, Validators.maxLength(40)]),
@@ -98,7 +97,7 @@ export class FormInterpretorTaskComponent implements OnInit {
 
   addOutput() {
     const i = this.task.info.return.push({} as Return);
-    (this.ownerForm.controls['return'] as FormArray).insert(
+    (this.ownerForm.controls.return as FormArray).insert(
       i,
       new FormGroup({
         type: new FormControl('', [Validators.required, Validators.maxLength(40)]),

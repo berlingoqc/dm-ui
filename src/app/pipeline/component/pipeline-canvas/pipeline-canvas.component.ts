@@ -108,7 +108,7 @@ export class PipelineCanvasComponent implements AfterViewInit {
 
   startingPrimitive: TaskNodePrimitive;
 
-  @ViewChild('canvas') public canvas: ElementRef;
+  @ViewChild('canvas', { static: true }) public canvas: ElementRef;
   canvasEl: HTMLCanvasElement;
 
   private cx: CanvasRenderingContext2D;

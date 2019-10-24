@@ -32,20 +32,20 @@ export interface Aria2Version {
 @Rpcimplement('aria2', 'aria2')
 @Injectable()
 export class Aria2RPCCall {
-  addUri(item: string[]): Observable<string> {
+  addUri(item: any[]): Observable<string> {
     return null;
   }
-  addTorrent(torrent: string): Observable<string> {
+  addTorrent(torrent: string[]): Observable<string> {
     return null;
   }
 
-  forceRemove(gid: string): Observable<string> {
+  forceRemove(gid: string[]): Observable<string> {
     return null;
   }
-  remove(gid: string): Observable<string> {
+  remove(gid: string[]): Observable<string> {
     return null;
   }
-  pause(gid: string): Observable<any> {
+  pause(gid: string[]): Observable<any> {
     return null;
   }
   pauseAll(): Observable<string> {
@@ -63,13 +63,13 @@ export class Aria2RPCCall {
   tellActive(): Observable<Aria2Status[]> {
     return null;
   }
-  tellWaiting(offset: number, num: number): Observable<Aria2Status[]> {
+  tellWaiting(args: any[]): Observable<Aria2Status[]> {
     return null;
   }
-  tellStopped(offset: number, num: number): Observable<Aria2Status[]> {
+  tellStopped(args: any[]): Observable<Aria2Status[]> {
     return null;
   }
-  changePosition(gid: string, pos: number, how: string): Observable<any> {
+  changePosition(args: any[]): Observable<any> {
     return null;
   }
   getGlobalStat(): Observable<Aria2Stat> {
@@ -79,7 +79,7 @@ export class Aria2RPCCall {
     return null;
   }
 
-  changeGlobalOption(options: any): Observable<any> {
+  changeGlobalOption(options: any[]): Observable<any> {
     return null;
   }
 
@@ -89,7 +89,7 @@ export class Aria2RPCCall {
   purgeDownloadResult(): Observable<string> {
     return null;
   }
-  removeDownloadResult(gid: string): Observable<string> {
+  removeDownloadResult(gid: string[]): Observable<string> {
     return null;
   }
 }

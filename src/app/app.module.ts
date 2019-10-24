@@ -1,5 +1,5 @@
 import { Injector, NgModule } from '@angular/core';
-import { NgxJsonrpcModule, RPCClientSocket } from 'ngx-jsonrpc';
+import { NgxJsonrpcModule, RPCClientSettings, RPCClientSocket } from 'ngx-jsonrpc';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -44,7 +44,8 @@ import { showMessagObservable } from './utility/snackbar';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(private injector2: Injector, client: RPCClientSocket, ariaSocket: Aria2WS) {
+  constructor(private injector2: Injector, rpcSettings: RPCClientSettings, client: RPCClientSocket, ariaSocket: Aria2WS) {
+    rpcSettings.url = 'localhost:4200';
     ServiceLocator.injector = this.injector2;
     client.init();
     showMessagObservable(ariaSocket.onDownloadStart(), () => 'A download just start');

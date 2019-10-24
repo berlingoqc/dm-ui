@@ -1,9 +1,9 @@
-import { Variable, ActivePipelineStatus } from './../../pipeline-rpc';
-import { Pipe } from '@angular/compiler/src/core';
-import { Component, OnInit, Input } from '@angular/core';
+import { ActivePipelineStatus, Variable } from './../../pipeline-rpc';
+import { Component, Input, OnInit } from '@angular/core';
 import { Pipeline, PipelineRPCClient } from '../../pipeline-rpc';
-import { pipe } from '@angular/core/src/render3';
+
 import { Observable } from 'rxjs';
+import { Pipe } from '@angular/compiler/src/core';
 
 @Component({
   selector: 'app-register',
