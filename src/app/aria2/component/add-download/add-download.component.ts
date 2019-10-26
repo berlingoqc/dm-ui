@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 
 import { Aria2RPCCall } from './../../aria2rpc.service';
 import { RegisterComponent } from 'src/app/pipeline/component/register/register.component';
@@ -9,7 +9,7 @@ import { RegisterComponent } from 'src/app/pipeline/component/register/register.
   styleUrls: ['./add-download.component.sass']
 })
 export class AddDownloadComponent implements OnInit {
-  url: string;
+  @Input() url: string;
 
   @ViewChild(RegisterComponent, { static: true }) registerComponent: RegisterComponent;
 

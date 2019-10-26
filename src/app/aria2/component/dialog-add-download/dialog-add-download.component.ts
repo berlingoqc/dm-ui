@@ -7,7 +7,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
   styleUrls: ['./dialog-add-download.component.sass']
 })
 export class DialogAddDownloadComponent implements OnInit {
-  constructor(public dialogRef: MatDialogRef<DialogAddDownloadComponent>) {}
+  constructor(public dialogRef: MatDialogRef<DialogAddDownloadComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {}
 
   ngOnInit() {}
 }

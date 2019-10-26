@@ -135,6 +135,41 @@
           }
         }
       }
+    },
+    "ngx-find-download-link": {
+      "projectType": "library",
+      "root": "projects/ngx-find-download-link",
+      "sourceRoot": "projects/ngx-find-download-link/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-find-download-link/tsconfig.lib.json",
+            "project": "projects/ngx-find-download-link/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-find-download-link/src/test.ts",
+            "tsConfig": "projects/ngx-find-download-link/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-find-download-link/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-find-download-link/tsconfig.lib.json",
+              "projects/ngx-find-download-link/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "downloda-manager-ui"

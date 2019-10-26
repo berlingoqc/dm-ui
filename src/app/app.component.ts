@@ -39,6 +39,23 @@ const zoneSettings: Zone[] = [
       },
     ],
   },
+  {
+    name: 'find-download',
+    zone: [
+      {
+        destination: 'find-download',
+        icon: 'home',
+      },
+      {
+        destination: 'find-download/new',
+        icon: 'create'
+      },
+      {
+        destination: 'find-download/entity',
+        icon: 'search'
+      }
+    ]
+  }
 ];
 
 @Component({

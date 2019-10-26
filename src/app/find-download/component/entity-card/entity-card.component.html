@@ -1,0 +1,15 @@
+<mat-accordion>
+    <mat-expansion-panel *ngFor="let e of entitysName; index as i" (opened)="getContent(i)">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{e}}
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div *ngIf="entitys[i]">
+        <app-record-table [records]="entitys[i].records"></app-record-table>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>

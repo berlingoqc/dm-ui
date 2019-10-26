@@ -1,0 +1,16 @@
+@import url(~@angular/material/prebuilt-themes/indigo-pink.css);
+.container-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+table {
+  width: 100%;
+}
+.right-aligned-header > .mat-content {
+  justify-content: space-between;
+}
+.mat-content > mat-panel-title,
+.mat-content > mat-panel-description {
+  flex: 0 0 auto;
+}

@@ -1,3 +1,4 @@
+import { DaemonAPI, NgxFindDownloadLinkModule } from 'projects/ngx-find-download-link/src/public-api';
 import { Injector, NgModule } from '@angular/core';
 import { NgxJsonrpcModule, RPCClientSettings, RPCClientSocket } from 'ngx-jsonrpc';
 
@@ -8,6 +9,7 @@ import { Aria2WS } from './aria2/aria2rpc.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { DmModule } from './dm/dm.module';
 import { FileexplorerModule } from './fileexplorer/fileexplorer.module';
+import { FindDownloadModule } from './find-download/find-download.module';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -38,16 +40,24 @@ import { showMessagObservable } from './utility/snackbar';
     SettingsModule,
     DmModule,
     UtilityModule,
-    FileexplorerModule
+    FileexplorerModule,
+    NgxFindDownloadLinkModule,
+    FindDownloadModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(private injector2: Injector, rpcSettings: RPCClientSettings, client: RPCClientSocket, ariaSocket: Aria2WS) {
-    rpcSettings.url = 'localhost:4200';
+  constructor(
+    private injector2: Injector,
+    rpcSettings: RPCClientSettings,
+    client: RPCClientSocket,
+    ariaSocket: Aria2WS) {
+
+    rpcSettings.url = 'localhost:3434';
     ServiceLocator.injector = this.injector2;
     client.init();
     showMessagObservable(ariaSocket.onDownloadStart(), () => 'A download just start');
+
   }
 }

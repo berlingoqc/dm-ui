@@ -39,7 +39,7 @@ export class QueueComponent implements OnInit {
 
   togglePauseItem(element: Aria2Status) {
     if (element.status === 'active') {
-      showMessagObservable(this.aria.pause(element.gid), data => data);
+      showMessagObservable(this.aria.pause([element.gid]), data => data);
     } else if (element.status === 'paused') {
       showMessagObservable(this.aria.unpause(element.gid), data => data);
     }

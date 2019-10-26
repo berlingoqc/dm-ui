@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RunnerRPC, RunnerInfo } from '../runner-rpc.module';
+import { RunnerInfo, RunnerRPC } from '../runner-rpc.module';
 
 @Component({
   selector: 'app-program-card',
@@ -10,8 +10,8 @@ export class ProgramCardComponent implements OnInit {
   runners: RunnerInfo[];
 
   constructor(private client: RunnerRPC) {
-    this.client.GetActiveRunner().subscribe((d: any) => {
-      this.runners = d[0];
+    this.client.GetActiveRunner().subscribe(runners => {
+      this.runners = runners;
     });
   }
 

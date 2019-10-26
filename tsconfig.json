@@ -18,6 +18,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-find-download-link": [
+        "dist/ngx-find-download-link"
+      ],
+      "ngx-find-download-link/*": [
+        "dist/ngx-find-download-link/*"
+      ]
+    }
   }
 }

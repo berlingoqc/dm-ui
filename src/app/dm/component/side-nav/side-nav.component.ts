@@ -1,5 +1,5 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { Router, NavigationStart, Event, NavigationEnd } from '@angular/router';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Event, NavigationEnd, NavigationStart, Router } from '@angular/router';
 
 const SELECTED_COLOR = 'primary';
 const UNSELECTED_COLOR = 'warn';
@@ -8,7 +8,7 @@ class NavigationOption {
   text: string;
   route: string;
   tooltip: string;
-  color: string = 'warn';
+  color = 'warn';
 }
 
 const NAVIGATION = [
@@ -22,6 +22,12 @@ const NAVIGATION = [
     text: 'Ydl',
     route: 'ydl',
     tooltip: 'Access youtubeDl dashboard',
+    color: ''
+  },
+  {
+    text: 'FD',
+    route: 'find-download',
+    tooltip: 'Find download dashboard',
     color: ''
   },
   {
