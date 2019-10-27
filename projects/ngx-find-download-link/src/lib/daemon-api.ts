@@ -24,4 +24,12 @@ export class DaemonAPI {
   StartCrawler(crawler: string, browsing: string, start: number, end: number): Observable<CrawlingRunInfo> {
     return null;
   }
+
+  GetAvailableCrawler(): Observable<string[]> {
+    return null;
+  }
+
+  GetAvailableBrowsingForCrawler(name: string): Observable<string[]> {
+    return null;
+  }
 }

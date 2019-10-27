@@ -14,12 +14,24 @@ export class FormCrawlingComponent implements OnInit {
 
   formGroup: FormGroup;
 
+  crawlers: string[];
+  innerBrowsings: string[] = [];
+
+  set crawler(c: string) {
+    this.daemon.GetAvailableBrowsingForCrawler(c).subscribe(x => {
+      this.innerBrowsings = x;
+    });
+  }
+
   constructor(private location: Location, private daemon: DaemonAPI, private router: Router) {
     this.formGroup = new FormGroup({
-      provider: new FormControl('piratebay', [Validators.required]),
-      browsing: new FormControl('hdmovie', [Validators.required]),
+      provider: new FormControl('', [Validators.required]),
+      browsing: new FormControl('', [Validators.required]),
       startingIndex: new FormControl('0', [Validators.required]),
       endingIndex: new FormControl('30', [Validators.required])
+    });
+    this.daemon.GetAvailableCrawler().subscribe(x => {
+      this.crawlers = x;
     });
   }
 
