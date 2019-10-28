@@ -1,8 +1,13 @@
-<div *ngIf="infos.length == 0" class="container-center">
-  <h4>No crawler is running currently</h4>
+<div>
+  <div *ngIf="infos.length == 0" class="container-center">
+    <h4>No crawler is running currently</h4>
+  </div>
+
+  <app-crawling-job-card *ngFor="let info of infos" [info]="info"></app-crawling-job-card>
 </div>
-
-<app-crawling-job-card *ngFor="let info of infos" [info]="info"></app-crawling-job-card>
-
-<app-crawling-job-card *ngFor="let info of archivedInfos" [info]="info"></app-crawling-job-card>
-
+<div>
+  <div class="container-center">
+    <h4>Archived run</h4>
+  </div>
+  <app-crawling-job-card *ngFor="let info of archivedInfos" [info]="info"></app-crawling-job-card>
+</div>

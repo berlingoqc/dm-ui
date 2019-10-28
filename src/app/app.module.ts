@@ -44,7 +44,6 @@ import { showMessagObservable } from './utility/snackbar';
     FileexplorerModule,
     NgxFindDownloadLinkModule,
     FindDownloadModule,
-    NgxEchartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

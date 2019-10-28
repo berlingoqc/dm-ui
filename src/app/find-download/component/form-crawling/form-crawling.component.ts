@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DaemonAPI, IntervalCrawled } from 'projects/ngx-find-download-link/src/public-api';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { DaemonAPI } from 'projects/ngx-find-download-link/src/public-api';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
@@ -17,9 +17,17 @@ export class FormCrawlingComponent implements OnInit {
   crawlers: string[];
   innerBrowsings: string[] = [];
 
+  innerCrawler: string;
+
+  interval: { [id: string]: IntervalCrawled[]} = {};
+
   set crawler(c: string) {
+    this.innerCrawler = c;
     this.daemon.GetAvailableBrowsingForCrawler(c).subscribe(x => {
       this.innerBrowsings = x;
+    });
+    this.daemon.GetCrawledInterval(c).subscribe(x => {
+      this.interval = x;
     });
   }
 
@@ -46,6 +54,10 @@ export class FormCrawlingComponent implements OnInit {
       this.router.navigate(['find-download']);
     });
 
+  }
+
+  getIntervals(): any[] {
+    return Object.entries(this.interval);
   }
 
   onCancel(event: MouseEvent) {

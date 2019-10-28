@@ -36,3 +36,8 @@ export interface Entity {
   name: string;
   records: Record[];
 }
+
+export interface IntervalCrawled {
+  id: number;
+  interval: number[];
+}

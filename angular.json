@@ -30,7 +30,9 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/echarts/dist/echarts.js"
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {
@@ -63,7 +65,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "downloda-manager-ui:build"
+            "browserTarget": "downloda-manager-ui:build",
           },
           "configurations": {
             "production": {

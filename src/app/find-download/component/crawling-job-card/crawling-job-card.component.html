@@ -1,6 +1,12 @@
 <mat-card *ngIf="info">
   <mat-card-title>
-    <span *ngIf="info.status == 'archived'">{{info.id * 1000 | date:'short'}}</span> {{info.crawler}} on {{info.browsing}}
+    <div style="display: flex; align-items: center;">
+      <div *ngIf="info.status == 'running'" class="circle red"></div>
+      <div>
+        <span *ngIf="info.status == 'archived'">{{info.id * 1000 | date:'short'}}</span> {{info.crawler}} on
+        {{info.browsing}}
+      </div>
+    </div>
   </mat-card-title>
   <mat-card-subtitle>
     Browsing {{info.starting}} to {{info.ending}} currently at {{info.current}}

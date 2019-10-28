@@ -1,33 +1,32 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
+  MatBottomSheetModule,
   MatButtonModule,
   MatCardModule,
   MatCheckboxModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatIconModule,
-  MatGridListModule,
-  MatTableModule,
-  MatProgressBarModule,
   MatChipsModule,
-  MatRadioModule,
-  MatToolbarModule,
   MatDialogModule,
-  MatTreeModule,
-  MatListModule,
-  MatSidenavModule,
-  MatTooltipModule,
-  MatBottomSheetModule,
-  MatSelectModule,
   MatExpansionModule,
+  MatFormFieldModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
   MatPaginatorModule,
-  MatSortModule
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSortModule,
+  MatTableModule,
+  MatToolbarModule,
+  MatTooltipModule,
+  MatTreeModule
 } from '@angular/material';
 
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CommonModule } from '@angular/common';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgModule } from '@angular/core';
 
 const MAT_MODULE = [
@@ -59,6 +58,7 @@ const MAT_MODULE = [
   MatExpansionModule,
   MatPaginatorModule,
   MatSortModule,
+  MatProgressSpinnerModule,
   ReactiveFormsModule
 ];
 

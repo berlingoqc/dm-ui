@@ -1,10 +1,10 @@
-import { CrawlingRunInfo } from './model';
+import { CrawlingRunInfo, IntervalCrawled } from './model';
+
 import { Observable } from 'rxjs';
 import { Rpcimplement } from 'ngx-jsonrpc';
 
 @Rpcimplement('dm', 'findDownloadDaemon')
 export class DaemonAPI {
-
   GetActiveCrawler(): Observable<CrawlingRunInfo[]> {
     return null;
   }
@@ -45,4 +45,7 @@ export class DaemonAPI {
     return null;
   }
 
+  GetCrawledInterval(crawler: string): Observable<{[id: string]: IntervalCrawled[]} > {
+    return null;
+  }
 }
