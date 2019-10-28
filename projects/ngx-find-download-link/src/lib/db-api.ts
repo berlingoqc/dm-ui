@@ -1,4 +1,5 @@
-import { Entity } from './model';
+import { CrawlingRunInfo, Entity } from './model';
+
 import { Observable } from 'rxjs';
 import { Rpcimplement } from 'ngx-jsonrpc';
 
@@ -12,6 +13,7 @@ export class FindDownloadAPI {
   GetEntity(name: string): Observable<Entity> {
     return null;
   }
+
 
 
 }

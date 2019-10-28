@@ -1,5 +1,6 @@
 import { Aria2Module } from './../aria2/aria2.module';
 import { CommonModule } from '@angular/common';
+import { CrawlingJobCardComponent } from './component/crawling-job-card/crawling-job-card.component';
 import { CrawlingJobTableComponent } from './component/crawling-job-table/crawling-job-table.component';
 import { EntityCardComponent } from './component/entity-card/entity-card.component';
 import { FindDownloadComponent } from './find-download.component';
@@ -10,7 +11,13 @@ import { NgModule } from '@angular/core';
 import { RecordTableComponent } from './component/record-table/record-table.component';
 
 @NgModule({
-  declarations: [FormCrawlingComponent, EntityCardComponent, RecordTableComponent, CrawlingJobTableComponent, FindDownloadComponent],
+  declarations: [
+    FormCrawlingComponent,
+    EntityCardComponent,
+    RecordTableComponent,
+    CrawlingJobTableComponent,
+    FindDownloadComponent,
+    CrawlingJobCardComponent],
   imports: [
     CommonModule,
     MatModule,

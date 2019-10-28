@@ -12,4 +12,7 @@ export class FindDownloadWS {
   onCrawlingInfoUpdate(): Subject<CrawlingRunInfo> {
     return null;
   }
+  onArchiveDelete(): Subject<number> {
+    return null;
+  }
 }

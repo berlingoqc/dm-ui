@@ -2,22 +2,7 @@
   <h4>No crawler is running currently</h4>
 </div>
 
-<mat-card *ngFor="let info of infos">
-  <mat-card-title>
-    <span>{{info.status}}</span> {{info.crawler}} on {{info.browsing}}
-  </mat-card-title>
-  <mat-card-subtitle>
-    Browsing {{info.starting}} to {{info.ending}} currently at {{info.current}}
-  </mat-card-subtitle>
-  <mat-card-content>
-    <div *ngIf="info.error != ''">
-      ERROR {{info.error}}
-    </div>
+<app-crawling-job-card *ngFor="let info of infos" [info]="info"></app-crawling-job-card>
 
+<app-crawling-job-card *ngFor="let info of archivedInfos" [info]="info"></app-crawling-job-card>
 
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-button (click)="remove(info)" [disabled]="info.status != 'stopped'">Remove</button>
-    <button mat-button (click)="cancel(info)">Cancel</button>
-  </mat-card-actions>
-</mat-card>

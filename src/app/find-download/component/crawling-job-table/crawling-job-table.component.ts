@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CrawlingRunInfo, DaemonAPI } from 'projects/ngx-find-download-link/src/public-api';
-
-import { FindDownloadWS } from './../../../../../projects/ngx-find-download-link/src/lib/ws';
-import { showMessagObservable } from 'src/app/utility/snackbar';
+import { CrawlingRunInfo, DaemonAPI, FindDownloadWS } from 'projects/ngx-find-download-link/src/public-api';
 
 @Component({
   selector: 'app-crawling-job-table',
@@ -12,11 +9,28 @@ import { showMessagObservable } from 'src/app/utility/snackbar';
 export class CrawlingJobTableComponent implements OnInit {
   infos: CrawlingRunInfo[] = [];
 
+  archivedInfos: CrawlingRunInfo[] = [];
+
   constructor(private daemonAPI: DaemonAPI, private findDownloadWS: FindDownloadWS) {
     this.findDownloadWS.onCrawlingInfoUpdate().subscribe(x => {
-      const index = this.infos.findIndex(y => y.id === x.id );
+      const index = this.infos.findIndex(y => y.id === x.id);
       if (index > -1) {
-        this.infos[index] = x;
+        if (x.status === 'archived') {
+          this.infos = this.infos.slice(index + 1, 1);
+          this.archivedInfos.push(x);
+        } else {
+          this.infos[index] = x;
+        }
+      } else {
+        this.infos.push(x);
+      }
+    });
+
+    this.findDownloadWS.onArchiveDelete().subscribe(id => {
+      console.log('archived deleteedd');
+      const index = this.archivedInfos.findIndex(x => x.id === id);
+      if (index > -1) {
+        this.archivedInfos = this.archivedInfos.slice(index + 1, 1);
       }
     });
   }
@@ -24,23 +38,15 @@ export class CrawlingJobTableComponent implements OnInit {
   ngOnInit() {
     this.daemonAPI.GetActiveCrawler().subscribe(infos => {
       this.infos = infos;
-    } );
-  }
-
-  cancel(info: CrawlingRunInfo) {
-    showMessagObservable(this.daemonAPI.StopActiveCrawler(info.id), () => 'Crawler is stop');
-  }
-
-  remove(info: CrawlingRunInfo) {
-    this.daemonAPI.RemoveCrawler(info.id).subscribe(x => {
-      this.infos = x;
+    });
+    this.daemonAPI.GetCrawlingRunInfos().subscribe(infos => {
+      if (infos) {
+        this.archivedInfos = infos;
+      }
     });
   }
-
   error(err: any) {
     return JSON.stringify(err);
   }
-
-
 
 }

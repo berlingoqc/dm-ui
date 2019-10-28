@@ -17,7 +17,7 @@ export class DaemonAPI {
     return null;
   }
 
-  StartCrawlerAfter(name: number): Observable<CrawlingRunInfo> {
+  StartCrawlerAfter(name: number, ending: number): Observable<CrawlingRunInfo> {
     return null;
   }
 
@@ -32,4 +32,17 @@ export class DaemonAPI {
   GetAvailableBrowsingForCrawler(name: string): Observable<string[]> {
     return null;
   }
+
+  GetCrawlingRunDetail(id: number): Observable<CrawlingRunInfo> {
+    return null;
+  }
+
+  GetCrawlingRunInfos(): Observable<CrawlingRunInfo[]> {
+    return null;
+  }
+
+  RemoveCrawlingRun(id: number): Observable<any> {
+    return null;
+  }
+
 }

@@ -1,0 +1,18 @@
+<mat-card *ngIf="info">
+  <mat-card-title>
+    <span *ngIf="info.status == 'archived'">{{info.id * 1000 | date:'short'}}</span> {{info.crawler}} on {{info.browsing}}
+  </mat-card-title>
+  <mat-card-subtitle>
+    Browsing {{info.starting}} to {{info.ending}} currently at {{info.current}}
+  </mat-card-subtitle>
+  <mat-card-content>
+    <div *ngIf="info.error && info.error != ''">
+      ERROR {{info.error}}
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="startAfter()" *ngIf="info.status == 'archived'">Start after</button>
+    <button mat-button (click)="remove()" *ngIf="info.status == 'archived' || info.status == 'stopped'">Remove</button>
+    <button mat-button (click)="cancel()" *ngIf="info.status == 'running'">Cancel</button>
+  </mat-card-actions>
+</mat-card>
