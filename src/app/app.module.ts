@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatModule } from './mat/mat.module';
+import { NgxEchartsModule } from 'ngx-echarts';
 import { PipelineModule } from './pipeline/pipeline.module';
 import { RpcModule } from './rpc/rpc.module';
 import { ServiceLocator } from './locator.service';
@@ -42,7 +43,8 @@ import { showMessagObservable } from './utility/snackbar';
     UtilityModule,
     FileexplorerModule,
     NgxFindDownloadLinkModule,
-    FindDownloadModule
+    FindDownloadModule,
+    NgxEchartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

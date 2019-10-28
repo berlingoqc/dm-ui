@@ -4,6 +4,9 @@
   </mat-card-title>
   <mat-card-subtitle>
     Browsing {{info.starting}} to {{info.ending}} currently at {{info.current}}
+    <div *ngIf="info.status == 'running'">
+      <mat-progress-bar mode="determinate" [value]="(info.current * 100) / info.ending"></mat-progress-bar>
+    </div>
   </mat-card-subtitle>
   <mat-card-content>
     <div *ngIf="info.error && info.error != ''">
