@@ -47,4 +47,11 @@ export interface PagingSearch {
   offset: number;
   orderBy: string[];
   query: string;
+  category: string;
+}
+
+export interface PagingInfo {
+  item_count: number;
+  nbr_page: number;
+  current_page: number;
 }

@@ -1,4 +1,4 @@
-import { CrawlingRunInfo, Entity, PagingSearch } from './model';
+import { CrawlingRunInfo, Entity, PagingInfo, PagingSearch } from './model';
 
 import { Observable } from 'rxjs';
 import { Rpcimplement } from 'ngx-jsonrpc';
@@ -11,6 +11,10 @@ export class FindDownloadAPI {
   }
 
   GetEntity(name: string): Observable<Entity> {
+    return null;
+  }
+
+  GetPagingInfo(): Observable<PagingInfo> {
     return null;
   }
 
