@@ -41,3 +41,10 @@ export interface IntervalCrawled {
   id: number;
   interval: number[];
 }
+
+export interface PagingSearch {
+  limit: number;
+  offset: number;
+  orderBy: string[];
+  query: string;
+}

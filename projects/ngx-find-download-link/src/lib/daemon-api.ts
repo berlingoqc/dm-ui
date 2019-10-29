@@ -29,6 +29,10 @@ export class DaemonAPI {
     return null;
   }
 
+  GetAllBrowsing(): Observable<string[]> {
+    return null;
+  }
+
   GetAvailableBrowsingForCrawler(name: string): Observable<string[]> {
     return null;
   }

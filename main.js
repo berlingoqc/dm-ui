@@ -1,17 +1,42 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow } = require('electron')
 
-function createWindow() {
-  // Cree la fenetre du navigateur.
-  let win = new BrowserWindow({
-    width: 800,
+let win;
+
+function createWindow () {
+  // Create the browser window.
+  win = new BrowserWindow({
+    width: 600,
     height: 600,
-    webPreferences: {
-      nodeIntegration: true
-    }
-  });
+    backgroundColor: '#ffffff',
+  })
 
-  // and load the index.html of the app.
-  win.loadFile('./dist/downloda-manager-ui/index.html');
+
+  win.loadURL(`file://${__dirname}/dist/downloda-manager-ui/index.html`)
+
+  //// uncomment below to open the DevTools.
+  // win.webContents.openDevTools()
+
+  // Event when the window is closed.
+  win.on('closed', function () {
+    win = null
+  })
 }
 
-app.on('ready', createWindow);
+// Create window on electron intialization
+app.on('ready', createWindow)
+
+// Quit when all windows are closed.
+app.on('window-all-closed', function () {
+
+  // On macOS specific close process
+  if (process.platform !== 'darwin') {
+    app.quit()
+  }
+})
+
+app.on('activate', function () {
+  // macOS specific close process
+  if (win === null) {
+    createWindow()
+  }
+})

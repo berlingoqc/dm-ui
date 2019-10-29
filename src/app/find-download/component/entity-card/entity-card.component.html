@@ -1,15 +1,39 @@
-<mat-accordion>
-    <mat-expansion-panel *ngFor="let e of entitysName; index as i" (opened)="getContent(i)">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          {{e}}
-        </mat-panel-title>
-        <mat-panel-description>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
+<mat-toolbar>
+  <form style="display: flex; align-items: center;">
+    <mat-chip-list style="padding-right: 20px;">
+      <mat-chip (click)="arrowLeft()">
+        <mat-icon>arrow_left</mat-icon>
+      </mat-chip>
+      <mat-chip (click)="arrowRight()">
+        <mat-icon>arrow_right</mat-icon>
+      </mat-chip>
+    </mat-chip-list>
 
-      <div *ngIf="entitys[i]">
-        <app-record-table [records]="entitys[i].records"></app-record-table>
-      </div>
-    </mat-expansion-panel>
-  </mat-accordion>
+    <mat-form-field>
+      <mat-label>Browsing</mat-label>
+      <mat-select (valueChange)="browsingChange($event)">
+        <mat-option *ngFor="let b of browsings" [value]="b">{{b}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput type="text" placeholder="Query" />
+    </mat-form-field>
+
+  </form>
+</mat-toolbar>
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let e of entitysName; index as i" (opened)="getContent(i)">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{e}}
+      </mat-panel-title>
+      <mat-panel-description>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <div *ngIf="entitys[i]">
+      <app-record-table [records]="entitys[i].records"></app-record-table>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
