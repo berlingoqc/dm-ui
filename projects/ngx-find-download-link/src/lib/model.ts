@@ -30,6 +30,9 @@ export interface Record {
   source: string;
   detail: TorrentDetail;
   link: string;
+  size: string;
+  seeders: number;
+  leechers: number;
 }
 
 export interface Entity {

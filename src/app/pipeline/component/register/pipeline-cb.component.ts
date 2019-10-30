@@ -1,4 +1,4 @@
-import { OnInit, Input, Component, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Pipeline, PipelineRPCClient } from '../../pipeline-rpc';
 
 @Component({
@@ -21,8 +21,8 @@ export class PipelineSelectComponent implements OnInit {
   constructor(private client: PipelineRPCClient) {}
 
   ngOnInit() {
-    this.client.GetPipelines().subscribe((data: any) => {
-      this.pipelines = Object.values(data[0]).map((x: Pipeline) => x);
+    this.client.GetPipelines().subscribe(data => {
+      this.pipelines = Object.values(data).map((x: Pipeline) => x);
     });
   }
 

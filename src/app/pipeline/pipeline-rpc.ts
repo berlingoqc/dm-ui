@@ -34,13 +34,6 @@ export interface ActivePipelineStatus {
   taskresult: { [id: string]: any };
 }
 
-export interface RegisterPipeline {
-  file: string;
-  pipeline: string;
-  provider: string;
-  data: any[];
-}
-
 export interface TaskQueueItem {
   index: number;
   tasknode: TaskNode;
@@ -48,10 +41,28 @@ export interface TaskQueueItem {
   previous: TaskQueueItem;
 }
 
-@Rpcimplement('dm', 'tr')
+export interface WatchSettings {
+  remove_after_run: boolean;
+  pipeline_id: string;
+  data: {[id: string]: any};
+}
+
+
+export interface WatchInfo {
+  event: string;
+  param: any;
+  settings: WatchSettings;
+}
+
+export interface AddEvent {
+  trigger: string;
+  info: WatchInfo;
+}
+
+@Rpcimplement('dm', 'trigger')
 @Injectable()
-export class TrRPCClient {
-  TriggerRegister(event: string, file: string): Observable<any> {
+export class TriggerRPC {
+  AddEvent(e: AddEvent): Observable<number> {
     return null;
   }
 }
@@ -65,39 +76,27 @@ export class PipelineRPCClient {
   GetPipeline(id: string): Observable<Pipeline> {
     return null;
   }
-
-  GetRegister(): Observable<{ [id: string]: RegisterPipeline }> {
-    return null;
-  }
-
   GetActives(): Observable<ActivePipelineStatus[]> {
     return null;
   }
-
   GetActive(id: string): Observable<ActivePipelineStatus> {
     return null;
   }
-
   Register(handler: string, pipeline: string, data: any, variable: any): Observable<any> {
     return null;
   }
-
   StartOnLocalFile(filepath: string, pipelineid: string, data: any): Observable<ActivePipelineStatus> {
     return null;
   }
-
   Create(data: Pipeline): Observable<any> {
     return null;
   }
-
   Delete(id: string): Observable<any> {
     return null;
   }
-
   DeleteRegister(id: string): Observable<any> {
     return null;
   }
-
   DeleteActive(id: string): Observable<string> {
     return null;
   }
@@ -124,7 +123,6 @@ export class PipelineWS {
   onPipelineError(): Subject<ActivePipelineStatus> {
     return null;
   }
-
   onPipelineStatusUpdate(): Subject<ActivePipelineStatus> {
     return null;
   }
@@ -138,9 +136,6 @@ export class PipelineWS {
     return null;
   }
   onTaskUpdate(): Subject<TaskMessage> {
-    return null;
-  }
-  onPipelineRegisterUpdate(): Subject<{ [id: string]: RegisterPipeline }> {
     return null;
   }
   onPipelineActiveUpdate(): Subject<{ [id: string]: ActivePipelineStatus }> {

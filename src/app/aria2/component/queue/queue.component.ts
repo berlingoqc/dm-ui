@@ -4,6 +4,7 @@ import { MatDialog, MatRadioChange } from '@angular/material';
 import { Observable, Subscription, interval } from 'rxjs';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { WatchSettings } from 'src/app/pipeline/pipeline-rpc';
 import { repeatWhen } from 'rxjs/operators';
 import { showMessagObservable } from 'src/app/utility/snackbar';
 
@@ -61,7 +62,8 @@ export class QueueComponent implements OnInit {
     showMessagObservable(obs, data => data);
   }
 
-  onItemDownward(gid: string) {}
+  onItemDownward(gid: string) {
+  }
 
   onItemUpward(gid: string) {}
 
@@ -86,5 +88,9 @@ export class QueueComponent implements OnInit {
       default:
         return ['status', 'name', 'progress', 'option'];
     }
+  }
+
+  onAddTriggerPipeline(data: WatchSettings) {
+    console.log('AADDD ' + data);
   }
 }

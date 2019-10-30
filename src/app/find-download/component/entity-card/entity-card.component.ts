@@ -70,6 +70,7 @@ export class EntityCardComponent implements OnInit {
     if (!data) {
       this.findDownloadAPI.GetEntity(this.entitysName[index]).subscribe(x => {
         this.entitys[index] = x;
+        console.log(x);
       });
     }
   }

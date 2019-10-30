@@ -1,21 +1,13 @@
-import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
-import { Component, OnInit, ViewChild, Inject, Input } from '@angular/core';
-import { PipelineRPCClient } from '../../pipeline-rpc';
-import { RegisterComponent } from '../register/register.component';
-import { showMessagObservable } from 'src/app/utility/snackbar';
+import { Component, EventEmitter, Inject, Input, OnInit, Output, ViewChild, Injectable, Optional } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
+import { PipelineRPCClient, TriggerRPC, WatchInfo, WatchSettings, AddEvent } from '../../pipeline-rpc';
 
-class StandaloneData {
-  mode: 'register' | 'active';
-  file: string;
-  provider: string;
-  data: any;
-}
+import { RegisterComponent } from '../register/register.component';
 
 @Component({
   selector: 'app-register-standalone',
   template: `
     <div>
-      <h4>{{ data.file }}</h4>
       <app-register [wanna]="true"></app-register>
       <button mat-button (click)="register()">Add</button>
     </div>
@@ -24,22 +16,26 @@ class StandaloneData {
 })
 export class RegisterStandaloneComponent implements OnInit {
   constructor(
-    private client: PipelineRPCClient,
+    private client: TriggerRPC,
     public dialogRef: MatDialogRef<RegisterStandaloneComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: StandaloneData
-  ) {}
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+    console.log('IN DATA ' + data);
+  }
 
   @ViewChild(RegisterComponent, { static: true }) registerComponent: RegisterComponent;
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   register() {
-    if (this.data.mode == 'active') {
-      showMessagObservable(this.registerComponent.active(this.data.file), x => x);
-    } else {
-      showMessagObservable(this.registerComponent.register(this.data.provider, this.data.data), d => d);
-    }
-    this.dialogRef.close();
+    this.data.info.settings = {
+      data: this.registerComponent.variables,
+      pipeline_id: this.registerComponent.pipeline.id,
+      remove_after_run: true,
+    };
+    this.client.AddEvent(this.data).subscribe(x => {
+      this.dialogRef.close();
+    });
   }
 }
 
@@ -52,13 +48,17 @@ export class RegisterStandaloneComponent implements OnInit {
   `
 })
 export class RegisterButton implements OnInit {
-  @Input() data: StandaloneData;
 
-  constructor(public dialog: MatDialog, public client: PipelineRPCClient) {}
+  @Input() watchInfo: AddEvent;
 
-  ngOnInit() {}
+  @Output() receiveData = new EventEmitter<WatchSettings>(true);
+
+  constructor(public dialog: MatDialog, public client: PipelineRPCClient) { }
+
+  ngOnInit() { }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(RegisterStandaloneComponent, { data: this.data });
+    console.log(this.watchInfo);
+    const dialogRef = this.dialog.open(RegisterStandaloneComponent, { data: this.watchInfo });
   }
 }

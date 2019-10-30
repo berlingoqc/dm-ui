@@ -36,13 +36,11 @@ export class RegisterComponent {
 
   change(pipeline: Pipeline) {
     this.pipeline = pipeline;
-    console.log(this.pipeline);
   }
 
   changeVariable(variable: Variable, newVar: Event) {
     const value = (newVar.target as HTMLInputElement).value;
     this.variables[variable.name] = value;
-    console.log(this.variables);
   }
 
   register(provider: string, data): Observable<any> {

@@ -8,7 +8,7 @@ import { Record } from 'projects/ngx-find-download-link/src/lib/model';
   styleUrls: ['./record-table.component.sass']
 })
 export class RecordTableComponent implements OnInit {
-  displayedColumns = ['source' , 'flags', 'options'];
+  displayedColumns = ['source' , 'size', 'info', 'flags', 'options'];
 
   @Input() records: Record[] = [];
 
