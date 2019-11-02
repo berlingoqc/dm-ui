@@ -11,7 +11,7 @@ function createWindow () {
   })
 
 
-  win.loadURL(`file://${__dirname}/dist/downloda-manager-ui/index.html`)
+  win.loadURL(`file://${__dirname}/dist/dm-ui/index.html`)
 
   //// uncomment below to open the DevTools.
   // win.webContents.openDevTools()

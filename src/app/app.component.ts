@@ -64,7 +64,7 @@ const zoneSettings: Zone[] = [
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'downloda-manager-ui';
+  title = 'dm-ui';
   opened = true;
   activeSection: Zone;
 
