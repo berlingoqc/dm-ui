@@ -65,7 +65,7 @@ const zoneSettings: Zone[] = [
 })
 export class AppComponent implements OnInit {
   title = 'downloda-manager-ui';
-  opened: true;
+  opened = true;
   activeSection: Zone;
 
   @ViewChild(SideNavComponent, { static: true }) sideNav: SideNavComponent;
