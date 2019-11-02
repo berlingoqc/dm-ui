@@ -4,22 +4,22 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
+    
     strategy:
       matrix:
         node-version: [12.x]
         os: [ubuntu-latest, windows-latest]
 
     steps:
-    - uses: actions/checkout@v1
+    - name: Check out code
+      uses: actions/checkout@v1
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
     - name: npm install
-      run: npm run install
+      run: npm install
     
     - name: npm build site
       run: npm run build
