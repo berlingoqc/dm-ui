@@ -1,5 +1,6 @@
-import { PipelineRPCClient, PipelineWS } from './../../pipeline-rpc';
 import { Component, OnInit } from '@angular/core';
+import { PipelineRPCClient, PipelineWS } from './../../pipeline-rpc';
+
 import { ActivePipelineStatus } from '../../pipeline-rpc';
 import { Subscription } from 'rxjs';
 
@@ -16,6 +17,9 @@ export class TableActivePipelineComponent implements OnInit {
   constructor(private client: PipelineRPCClient, private socket: PipelineWS) {}
 
   ngOnInit() {
+    this.client.GetActives().subscribe(d => {
+      this.active = Object.values(d);
+    });
     this.socket.onPipelineActiveUpdate().subscribe(d => {
       console.log('onActivePipelineUpdate');
       this.active = Object.values(d);

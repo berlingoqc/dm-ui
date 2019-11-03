@@ -76,7 +76,7 @@ export class PipelineRPCClient {
   GetPipeline(id: string): Observable<Pipeline> {
     return null;
   }
-  GetActives(): Observable<ActivePipelineStatus[]> {
+  GetActives(): Observable<{ [id: string]: ActivePipelineStatus }> {
     return null;
   }
   GetActive(id: string): Observable<ActivePipelineStatus> {
