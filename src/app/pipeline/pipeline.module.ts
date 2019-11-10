@@ -24,6 +24,7 @@ import { TableActivePipelineComponent } from './component/table-active-pipeline/
 import { TablePipelineComponent } from './component/table-pipeline/table-pipeline.component';
 import { TaskModule } from '../task/task.module';
 import { UtilityModule } from '../utility/utility.module';
+import { TypeInputComponent } from './component/type-input/type-input.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { UtilityModule } from '../utility/utility.module';
     PipelineCanvasComponent,
     FormVariablesComponent,
     PipelineSelectComponent,
-    PipelineCanvasButton
+    PipelineCanvasButton,
+    TypeInputComponent
   ],
   imports: [CommonModule, TaskModule, PipelineRoutingModule, MatModule, UtilityModule],
   providers: [PipelineRPCClient, TriggerRPC],

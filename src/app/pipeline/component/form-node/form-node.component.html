@@ -1,46 +1,44 @@
 <mat-card>
   <mat-card-title>Node</mat-card-title>
   <mat-card-subtitle *ngIf="level > 0">
-    <button mat-button (click)="delete.emit()"><mat-icon>delete</mat-icon></button>
+    <button mat-button (click)="delete.emit()">
+      <mat-icon>delete</mat-icon>
+    </button>
   </mat-card-subtitle>
-  <mat-card-content>
+  <mat-card-content [formGroup]="parentFormGroup">
     <div class="top-form">
-      <mat-form-field>
-        <mat-select (selectionChange)="taskSelected($event)" [(ngModel)]="node.taskid">
-          <mat-option *ngFor="let t of taskList" value="{{ t.name }}"
-            ><b>{{ t.name }}</b> {{ ' ' + t.description }}</mat-option
-          >
+      <mat-form-field >
+        <mat-select formControlName="taskid" (selectionChange)="taskSelected($event)">
+          <mat-option *ngFor="let t of taskList" value="{{ t.name }}"><b>{{ t.name }}</b> {{ ' ' + t.description }}
+          </mat-option>
         </mat-select>
       </mat-form-field>
       <hr />
     </div>
-    <div *ngIf="selectedTask">
-      <div *ngIf="selectedTask.params.length > 0">
-        <h4>Params</h4>
-        <hr />
-        <div class="top-form">
-          <mat-form-field *ngFor="let p of selectedTask.params; index as i">
-            <input matInput (change)="paramChange(p.name, $event)" placeholder="{{ p.name }}" />
-          </mat-form-field>
-        </div>
-      </div>
-      <div *ngIf="selectedTask.return.length != 0">
-        <h4>Output</h4>
-        <hr />
-        <div *ngFor="let n of node.nextnode; index as i" class="">
-          <div *ngIf="n">
-            <app-form-node
-              (delete)="deleteNode(i)"
-              [node]="node.nextnode[i]"
-              [level]="level + 1"
-              [taskList]="taskList"
-            ></app-form-node>
+    <div *ngIf="selectedTask" >
+      <div>
+        <div *ngIf="selectedTask.params.length > 0">
+          <h4>Params</h4>
+          <hr />
+          <div class="top-form">
+            <app-type-input *ngFor="let p of selectedTask.params; index as i" [param]="p" [parentForm]="getVariableFormGroup(i)" >
+            </app-type-input>
           </div>
-          <div *ngIf="!n">
-            <div>
-              <button mat-button (click)="addTask(i)">
-                <mat-icon>add</mat-icon>{{ selectedTask.return[i].description }}
-              </button>
+        </div>
+        <div *ngIf="selectedTask.return.length != 0">
+          <h4>Output</h4>
+          <hr />
+          <div *ngFor="let n of node.nextnode; index as i" class="">
+            <div *ngIf="n">
+              <app-form-node (delete)="deleteNode(i)" [node]="node.nextnode[i]" [level]="level + 1"
+                [taskList]="taskList" [parentFormGroup]="getNextNodeFromGroup(i)"></app-form-node>
+            </div>
+            <div *ngIf="!n">
+              <div>
+                <button mat-button (click)="addTask(i)">
+                  <mat-icon>add</mat-icon>{{ selectedTask.return[i].description }}
+                </button>
+              </div>
             </div>
           </div>
         </div>

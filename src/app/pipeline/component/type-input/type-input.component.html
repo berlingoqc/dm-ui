@@ -1,0 +1,36 @@
+<div [ngSwitch]="isArray()" [formGroup]="formGroup">
+  <input type="hidden" formControlName="name">
+  <div *ngSwitchCase="false" class="container">
+    <div [ngSwitch]="param.type">
+      <mat-checkbox *ngSwitchCase="'bool'" formControlName="field" (change)="setValueCheckbox($event)">
+        {{param.name}}</mat-checkbox>
+      <mat-form-field *ngSwitchDefault>
+        <input matInput type={{getType(param.type)}} formControlName="field" placeholder="{{ param.name }}" />
+      </mat-form-field>
+    </div>
+    <div class="description">
+      <p>{{param.description}}</p>
+    </div>
+  </div>
+  <div *ngSwitchCase="true">
+    <div>
+      <h4>{{param.name}}</h4>
+
+      <p>{{param.description}}</p>
+    </div>
+    <div class="container" formArrayName="field">
+      <div class="container" *ngFor="let a of arrayItem; index as i">
+        <mat-form-field>
+          <input matInput type={{getType(param.type)}} [formControlName]="i"
+            placeholder="{{ param.name }}" />
+        </mat-form-field>
+        <mat-chip (click)="deleteArrayItem(i)">
+          <mat-icon>delete</mat-icon>
+        </mat-chip>
+      </div>
+      <mat-chip (click)="addArrayItem()">
+        <mat-icon>add</mat-icon>
+      </mat-chip>
+    </div>
+  </div>
+</div>

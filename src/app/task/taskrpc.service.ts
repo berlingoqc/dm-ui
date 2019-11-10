@@ -7,6 +7,7 @@ export interface Params {
   name: string;
   type: string;
   optional: boolean;
+  default_value: string;
   description: string;
 }
 
