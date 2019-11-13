@@ -7,9 +7,10 @@ import { CommonModule } from '@angular/common';
 import { SideNavComponent } from './component/side-nav/side-nav.component';
 import { RpcModule } from '../rpc/rpc.module';
 import { RunnerModule } from '../runner/runner.module';
+import { LoginBackendComponent } from './component/login-backend/login-backend.component';
 
 @NgModule({
-  declarations: [SideNavComponent, DmComponent, DmDashboardComponent],
+  declarations: [SideNavComponent, DmComponent, DmDashboardComponent, LoginBackendComponent],
   exports: [SideNavComponent],
   imports: [CommonModule, MatModule, RpcModule, RunnerModule, DmRoutingModule],
   providers: []
