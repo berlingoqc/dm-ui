@@ -1,1 +1,26 @@
-<p>login-backend works!</p>
+<mat-card>
+  <mat-card-header class="container-center">
+    <mat-card-title>DM - Download manager</mat-card-title>
+    <mat-card-subtitle>Step to the next level</mat-card-subtitle>
+  </mat-card-header>
+
+  <div class="container-center container-img">
+    <img mat-card-image src="assets/img/logo.svg">
+  </div>
+
+  <mat-card-content>
+    <mat-list>
+      <div *ngFor="let s of ctx.context.settings">
+        <mat-list-item>
+          {{s.name}}
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </div>
+    </mat-list>
+    <div class="container-center">
+      <button mat-icon-button>
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>

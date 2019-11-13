@@ -22,6 +22,7 @@ import {
   MatTableModule,
   MatToolbarModule,
   MatTooltipModule,
+  MatDividerModule,
   MatTreeModule
 } from '@angular/material';
 
@@ -59,6 +60,7 @@ const MAT_MODULE = [
   MatPaginatorModule,
   MatSortModule,
   MatProgressSpinnerModule,
+  MatDividerModule,
   ReactiveFormsModule
 ];
 

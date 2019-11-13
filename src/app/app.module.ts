@@ -59,6 +59,5 @@ export class AppModule {
     ServiceLocator.injector = this.injector2;
     client.init();
     showMessagObservable(ariaSocket.onDownloadStart(), () => 'A download just start');
-
   }
 }

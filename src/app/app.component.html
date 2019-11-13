@@ -1,6 +1,5 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <div class="app-container">
-  <mat-sidenav-container fullscreen class="exemple-container">
+  <mat-sidenav-container fullscreen class="exemple-container" *ngIf="isConfigure">
     <mat-sidenav class="nav-container" #sidenav mode="side" [(opened)]="opened" (opened)="sideNav.onOpen()">
       <div class="nav-main">
         <app-side-nav (zoneChange)="onZoneChange($event)"></app-side-nav>
@@ -27,4 +26,6 @@
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
+
+  <app-login-backend *ngIf="!isConfigure"></app-login-backend>
 </div>

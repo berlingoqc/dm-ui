@@ -11,7 +11,7 @@ import { LoginBackendComponent } from './component/login-backend/login-backend.c
 
 @NgModule({
   declarations: [SideNavComponent, DmComponent, DmDashboardComponent, LoginBackendComponent],
-  exports: [SideNavComponent],
+  exports: [SideNavComponent, LoginBackendComponent],
   imports: [CommonModule, MatModule, RpcModule, RunnerModule, DmRoutingModule],
   providers: []
 })

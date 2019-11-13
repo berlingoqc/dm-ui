@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 
 import {NavItem} from './utility/chip-list-nav';
-import {RPCClientSocket} from 'ngx-jsonrpc';
 import {SideNavComponent} from './dm/component/side-nav/side-nav.component';
+import { DMContextService } from './dm/context.service';
 
 export interface Zone {
   name: string;
@@ -68,11 +68,18 @@ export class AppComponent implements OnInit {
   opened = true;
   activeSection: Zone;
 
+  isConfigure: boolean;
+
   @ViewChild(SideNavComponent, { static: true }) sideNav: SideNavComponent;
 
-  constructor() {}
+  constructor(private ctxService: DMContextService) {
+  }
 
   ngOnInit() {
+    const settings = this.ctxService.getDefaultBackend();
+    this.isConfigure = (settings !== null && settings !== undefined);
+    console.log(settings);
+    console.log(this.isConfigure);
   }
 
   onZoneChange(zone: string) {
